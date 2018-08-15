@@ -1,0 +1,315 @@
+input[type="radio"], input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+  visibility: hidden;
+}
+.nav-tabs[_ngcontent-c3] .nav-link[_ngcontent-c3] {
+  border: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+form>div>i{
+  color: #615c5c;
+}
+
+.btn-group-horizontal{
+  height: 11px;
+  padding-bottom: 18px;
+}
+.btn-group-horizontal>label{
+  width: 71px;
+  height: 28px;
+  cursor: pointer;  
+  
+
+}
+#sideTh{
+  box-shadow: -1px 3px 4px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  background-color: #cfd8dc;
+}
+.sheduleTable>tr>th{
+  border-bottom: 2px solid #4f6c8a8f;
+  font-weight: 600;
+}
+.pill{
+  margin-right: 3px;
+  
+}
+.tbodyShedule{
+  background-color: #dee0e0;
+}
+
+.tbodyShedule>tr>td{
+  // border-bottom: 2px solid#4f6c8a54;;
+  font-weight: 400;
+}
+.breadcrumb{
+  border-bottom-right-radius: 34px;
+  border-top-right-radius: 34px;
+  width: 200PX;
+  background-color: #007bff;
+  color: white;
+  font-weight: 800;
+
+}
+.horizontalHedule{
+  padding: 17px;
+}
+.blue-gradient {
+  background: -webkit-linear-gradient(50deg, #45cafc, #303f9f);
+  background: linear-gradient(40deg, #45cafc, #4285f4);
+}
+body {
+  background-color: #eee;
+}
+
+.side-nav .logo-sn {
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+}
+
+.side-nav .logo-sn img {
+  height: 38px;
+}
+
+.side-nav .search-form input[type=text] {
+  margin-top: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+.round>button{
+  border-radius: 19px;
+}
+.pt-3-half {
+  padding-top: 1.4rem;
+}
+.fixed-plugin {
+  position: fixed;
+  top: 62px;
+  right: 0;
+  width: 100px;
+  background: #e91e63ed;
+  z-index: 1031;
+  border-radius: 8px 0 0 8px;
+  text-align: center;
+  color: white;
+  font-family: cursive;
+}
+.modal .modal-dialog.modal-top-right {
+  width: 440px
+  }
+  
+@keyframes horizontal {
+	0%{transform:translate(0,0)}
+	6%{transform:translate(5px,0)}
+	12%{transform:translate(0,0)}
+	18%{transform:translate(5px,0)}
+	24%{transform:translate(0,0)}
+	30%{transform:translate(5px,0)}
+	36%,100%{transform:translate(0,0)}
+}
+.faa-horizontal.animated.faa-slow,
+.faa-horizontal.animated-hover.faa-slow:hover,
+.faa-parent.animated-hover:hover > .faa-horizontal.faa-slow {
+	animation: horizontal 3s ease infinite;
+}
+#toast {
+  visibility: hidden;
+  max-width: 50px;
+  height: 50px;
+  /*margin-left: -125px;*/
+  margin: auto;
+  background-color: #111;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+
+  position: fixed;
+  z-index: 1;
+  left: 0;right:0;
+  bottom: 30px;
+  font-size: 17px;
+  white-space: nowrap;
+}
+#toast #img{
+width: 50px;
+height: 50px;
+  
+  float: left;
+  
+  padding-top: 16px;
+  padding-bottom: 16px;
+  
+  box-sizing: border-box;
+
+  
+  background-color: rgb(10, 201, 26);
+  color: #fff;
+}
+#toast #desc{
+
+  
+  color: #fff;
+ 
+  padding: 16px;
+  
+  overflow: hidden;
+white-space: nowrap;
+}
+
+#toast.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 2s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 4s, fadeout 0.5s 4.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes expand {
+  from {min-width: 50px} 
+  to {min-width: 350px}
+}
+
+@keyframes expand {
+  from {min-width: 50px}
+  to {min-width: 350px}
+}
+@-webkit-keyframes stay {
+  from {min-width: 350px} 
+  to {min-width: 350px}
+}
+
+@keyframes stay {
+  from {min-width: 350px}
+  to {min-width: 350px}
+}
+@-webkit-keyframes shrink {
+  from {min-width: 350px;} 
+  to {min-width: 50px;}
+}
+
+@keyframes shrink {
+  from {min-width: 350px;} 
+  to {min-width: 50px;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;} 
+  to {bottom: 60px; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 60px; opacity: 0;}
+}
+/////
+#toast1 {
+  visibility: hidden;
+  max-width: 50px;
+  height: 50px;
+  /*margin-left: -125px;*/
+  margin: auto;
+   background-color: #111;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+
+  position: fixed;
+  z-index: 1;
+  left: 0;right:0;
+  bottom: 30px;
+  font-size: 17px;
+  white-space: nowrap;
+}
+#toast1 #img{
+width: 50px;
+height: 50px;
+  
+  float: left;
+  
+  padding-top: 16px;
+  padding-bottom: 16px;
+  
+  box-sizing: border-box;
+
+  
+  background-color: rgb(10, 201, 26);
+  color: #fff;
+}
+#toast1 #desc{
+
+  
+  color: #fff;
+ 
+  padding: 16px;
+  
+  overflow: hidden;
+white-space: nowrap;
+}
+
+#toast1.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 2s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 4s, fadeout 0.5s 4.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes expand {
+  from {min-width: 50px} 
+  to {min-width: 350px}
+}
+
+@keyframes expand {
+  from {min-width: 50px}
+  to {min-width: 350px}
+}
+@-webkit-keyframes stay {
+  from {min-width: 350px} 
+  to {min-width: 350px}
+}
+
+@keyframes stay {
+  from {min-width: 350px}
+  to {min-width: 350px}
+}
+@-webkit-keyframes shrink {
+  from {min-width: 350px;} 
+  to {min-width: 50px;}
+}
+
+@keyframes shrink {
+  from {min-width: 350px;} 
+  to {min-width: 50px;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;} 
+  to {bottom: 60px; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 60px; opacity: 0;}
+}
+.nav-tabs .nav-link {
+  border: none;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0;
+}

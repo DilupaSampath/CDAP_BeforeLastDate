@@ -1,0 +1,526 @@
+<nav class="breadcrumb">
+    <span class="breadcrumb-item">Nurses</span>
+</nav>
+<div class="row" style="margin-top: -49px;">
+<img src="./assets/gif/nurse.gif" alt="" style="height: 267px;">
+<div class="card mb-3 offset-md-4" style="max-width: 19rem;margin-top: -14px;left: 40px;height: 260px;">
+        <div class="card-header text-center">Working Shedules</div>
+    <div class="card-body">
+
+        <div class="btn-group-horizontal" style="padding-left: 23px;" data-toggle="buttons">
+            <label [ngStyle]="{'background-color': buttonColor1}" class="badge  ">
+                <input (click)="radio1Click()" type="radio" name="options" id="option1" autocomplete="off" checked> Ward1
+            </label>
+            <label [ngStyle]="{'background-color': buttonColor2}" class="badge  ">
+                <input (click)="radio2Click()" type="radio" name="options" id="option2" autocomplete="off"> Ward2
+            </label>
+            <label [ngStyle]="{'background-color': buttonColor3}" class="badge  ">
+                <input (click)="radio3Click()" type="radio" name="options" id="option3" autocomplete="off"> Ward3
+            </label>
+        </div>
+        <div class="btn-group-horizontal horizontalHedule" role="group" aria-label="horizontal button group">
+            <button style="background-color: #333" type="button" class="btn btn-git" data-toggle="modal" data-target="#modalShedule"
+                (click)="fluidRight2.show();loadThisWeek()" mdbWavesEffect>
+                <i class="fa fa-table pr-1"></i> This Week Shedule</button>
+            <button style="background-color: #333" type="button" class="btn btn-git" data-target="#modalShedule" (click)="fluidRight2.show();loadNextWeek()"
+                mdbWavesEffect>
+                <i class="fa fa-table pr-1"></i> Next Week Shedule</button>
+
+        </div>
+    </div>
+</div>
+</div>
+<Section>
+    <div class="card">
+        <div class="view py-3 gradient-card-header info-color-dark mx-4 d-flex justify-content-between align-items-center">
+
+            <div class="round">
+                <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
+                    <i class="fa fa-th-large mt-0"></i>
+                </button>
+                <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
+                    <i class="fa fa-columns mt-0"></i>
+                </button>
+            </div>
+
+            <a href="" class="white-text mx-3">Currnt Nurses</a>
+
+            <div class="round">
+                <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2" data-toggle="modal" data-target="#fullHeightModalRight"
+                    (click)="fluidRight.show()" mdbWavesEffect>
+                    <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+                </button>
+
+            </div>
+
+        </div>
+        <div class="card-body">
+            <div id="table" class="table-responsive">
+
+                <table class="table">
+                    <tr>
+                        <th class="text-center">Nurses Name</th>
+                        <th class="text-center">NIC</th>
+                        <th class="text-center">Ward</th>
+                        <th class="text-center">Assinged Date</th>
+                        <th class="text-center">Priority</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                    <tr *ngFor="let nurse of nurses; let i = index">
+                        <td class="pt-3-half">{{nurse.name}}</td>
+                        <td class="pt-3-half">{{nurse.NIC}}</td>
+                        <td class="pt-3-half">{{nurse.ward}}</td>
+                        <td class="pt-3-half">{{nurse.assingDate | date:'dd-DD-yyyy'}}</td>
+                        <td class="pt-3-half">{{nurse.priority}}</td>
+
+                        <td class="round">
+                            <button (click)="setToForm(i)" type="button" class="btn btn-outline-white btn-rounded btn-sm px-2" data-toggle="modal" data-target="#basicExample"
+                                (click)="fluidRight.show()">
+                                <i class="fa fa-pencil mt-0" style="color: brown"></i>
+                            </button>
+                            <button (click)="onRemoveIndex(i)" type="button" class="btn btn-danger btn-outline-white btn-rounded btn-sm px-2" data-toggle="modal"
+                                data-target="#modalConfirmDelete" (click)="fluidRight1.show()">
+                                <i class="fa fa-remove mt-0" style="color: red"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <!-- This is our clonable table line -->
+
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Editable table -->
+</Section>
+<section class="mb-5">
+
+    <!--Top Table UI-->
+    <div class="card p-2 mb-5">
+
+        <!--Grid row-->
+        <div class="row">
+
+            <!--Grid column-->
+
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-lg-3 col-md-6">
+
+                <!--Blue select-->
+
+                <!--/Blue select-->
+
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-lg-3 col-md-6">
+
+                <!--Blue select-->
+
+                <!--/Blue select-->
+
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-lg-3 col-md-6">
+
+                <form class="form-inline mt-2 ml-2">
+                    <input class="form-control my-0 py-0" type="text" placeholder="Search" style="max-width: 150px;">
+                    <button class="btn btn-sm btn-info ml-2 px-2">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+
+            </div>
+            <!--Grid column-->
+
+        </div>
+        <!--Grid row-->
+
+    </div>
+    <!--Top Table UI-->
+
+    <!--Card-->
+    <div class="card card-cascade narrower">
+
+        <!--Card header-->
+        <div class="view py-3 gradient-card-header info-color-dark mx-4 d-flex justify-content-between align-items-center">
+
+            <div class="round">
+                <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
+                    <i class="fa fa-th-large mt-0"></i>
+                </button>
+                <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
+                    <i class="fa fa-columns mt-0"></i>
+                </button>
+            </div>
+
+            <a href="" class="white-text mx-0">Nurses Details</a>
+
+            <div class="round">
+                <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
+                    <i class="fa fa-pencil mt-0"></i>
+                </button>
+                <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
+                    <i class="fa fa-remove mt-0"></i>
+                </button>
+                <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
+                    <i class="fa fa-info-circle mt-0"></i>
+                </button>
+            </div>
+
+        </div>
+        <!--/Card header-->
+
+        <!--Card content-->
+        <div class="card-body">
+
+            <div class="table-responsive">
+
+                <table class="table">
+                    <thead>
+                        <tr>
+
+                            <th class="th-lg">Nurses</th>
+                            <th class="th-lg">Ward</th>
+                            <th class="th-lg">Current Patients</th>
+                            <th class="th-lg">Next Week Patients</th>
+                            <th class="th-lg">Predicted Nurses</th>
+                            <th class="th-lg">Avalable Beds</th>
+                            <th class="th-lg">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Amali</th>
+                            <td>Ward 1</td>
+                            <td>120</td>
+                            <td>20</td>
+                            <td>3</td>
+                            <td>27</td>
+                            <td class="round">
+                                <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
+                                    <i class="fa fa-eye mt-0" style="color: orange;font-size:13px"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Ayodya</th>
+                            <td>Ward 2</td>
+                            <td>140</td>
+                            <td>40</td>
+                            <td>5</td>
+                            <td>30</td>
+                            <td class="round">
+                                <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
+                                    <i class="fa fa-eye mt-0" style="color: orange;font-size:13px"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Navini</th>
+                            <td>Ward 3</td>
+                            <td>80</td>
+                            <td>10</td>
+                            <td>2</td>
+                            <td>4</td>
+                            <td class="round">
+                                <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
+                                    <i class="fa fa-eye mt-0" style="color: orange;font-size:13px"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+        <!--/.Card content-->
+
+    </div>
+    <!--/.Card-->
+
+</section>
+
+<div mdbModal #fluidRight="mdb-modal" #style="mdb-modal" class="modal fade right" id="fullHeightModalRight" tabindex="-1"
+    role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-full-height modal-right " role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #0986e2; color: white;font-weight: 991;border: none;">
+                <h4 class="modal-title w-100" style="font-weight: 991;text-align: center" id="myModalLabel">
+                        <i class="fa fa-hospital-o" aria-hidden="true"></i>&nbsp;&nbsp;{{title}}</h4>
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="fluidRight.hide()">
+                    <span aria-hidden="true">×</span>
+                </button> -->
+            </div>
+            <div class="modal-body">
+
+                <ul class="list-group z-depth-0">
+                    <form>
+                        <div class="md-form">
+                            <i class="fa fa-user prefix "></i>
+                            <input [(ngModel)]="name" type="text" id="Name" class="form-control" mdbInputDirective [ngModelOptions]="{standalone: true}">
+                            <label for="Name">Name</label>
+                        </div>
+                        <div class="md-form">
+                            <i class="fa fa-user prefix "></i>
+                            <input [(ngModel)]="NIC" type="text" id="NIC" class="form-control" mdbInputDirective [ngModelOptions]="{standalone: true}">
+                            <label for="NIC">NIC</label>
+                        </div>
+
+                        <div class="md-form">
+                            <i class="fa fa-ambulance prefix " style="font-size:28px"></i>
+                            <input [(ngModel)]="ward" type="text" id="Ward" class="form-control" mdbInputDirective [ngModelOptions]="{standalone: true}">
+                            <label for="Ward">Ward</label>
+                        </div>
+                        <div class="md-form">
+                            <i class="fa fa-ambulance prefix " style="font-size:28px"></i>
+                            <!-- <input [(ngModel)]="assingDate" type="text" id="Assing" class="form-control" mdbInputDirective [ngModelOptions]="{standalone: true}"> -->
+                            <input type="date"  [(ngModel)]="assingDate" id="Assing" class="form-control" mdbInputDirective [ngModelOptions]="{standalone: true}" value="{{assingDate}}">
+
+                            
+                        </div>
+                        <mdb-date-picker #datePicker name="mydate" [options]="myDatePickerOptions" [placeholder]="'Selected date'" [(ngModel)]="assingDate"required></mdb-date-picker>
+
+                        <div class="md-form">
+                            <i class="fa fa-line-chart prefix " style="font-size:28px"></i>
+                            <input [(ngModel)]="priority" type="text" id="Priority" class="form-control" mdbInputDirective [ngModelOptions]="{standalone: true}">
+                            <label for="Priority">Priority</label>
+                        </div>
+
+                        <!-- <div class="md-form">
+                                  <i class="fa fa-pencil prefix grey-text"></i>
+                                  <textarea type="text" id="contactFormMessage"  class="md-textarea" style="height: 100px"
+                                  mdbInputDirective></textarea>
+                                  <label for="contactFormMessage"></label>
+                                </div>
+                               -->
+                        <!-- <div class="text-center">
+                                  <button class="btn btn-unique waves-light" mdbWavesEffect>Send
+                                    <i class="fa fa-paper-plane-o ml-1"></i>
+                                  </button>
+                                </div> -->
+                    </form>
+                    <!-- contact form -->
+                </ul>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary waves-light" data-dismiss="modal" (click)="fluidRight.hide()" mdbWavesEffect>Close</button>
+                <button *ngIf="title=='New Nurse'" type="button" class="btn btn-primary waves-light" mdbWavesEffect (click)="onCreate();launch_toast2();fluidRight.hide()">Assign Nurse</button>
+                <button *ngIf="title !='New Nurse'" type="button" class="btn btn-primary waves-light" mdbWavesEffect (click)="onUpdate();launch_toast2();fluidRight.hide()">Save Changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="fixed-plugin faa-horizontal faa-slow animated ">
+    <div class="dropdown show-dropdown" style="height: 27px;">
+        <a data-toggle="modal" data-target="#basicExample" (click)="centralLarge.show()" mdbWavesEffect>
+            Leave Plans
+        </a>
+    </div>
+</div>
+
+<div mdbModal #centralLarge="mdb-modal" class="modal fade right" id="basicExample" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true" style="height: 604px;">
+    <div class="modal-dialog modal-side modal-top-right modal-lg " role="document">
+        <div class="modal-content">
+
+            <div class="modal-header light-blue darken-3 white-text">
+                <h4 class="title">
+                    <i class="fa fa-users"></i> Leave Possibility - Pending Months </h4>
+
+            </div>
+
+            <div class="modal-body">
+                <ul class="nav nav-tabs nav-justified indigo" role="tablist">
+                    <li class="nav-item" (click)="clickTab1()">
+                        <a [ngStyle]="{'background-color': tabColor1,'color':color1}" class="nav-link active" data-toggle="tab" routerLink="tab1" routerLinkActive="active" role="tab">
+                            <i class="fa fa-user"></i>Check For Leaves</a>
+                    </li>
+                    <li class="nav-item" (click)="clickTab2()">
+                        <a [ngStyle]="{'background-color': tabColor2,'color':color2}" class="nav-link" data-toggle="tab" routerLink="tab2" routerLinkActive="active" role="tab">
+                            <i class="fa fa-heart"></i> Leave History</a>
+                    </li>
+
+                </ul>
+                <!-- Tab panels -->
+                <div class="tab-content">
+                    <!--Panel 1-->
+                    <div class="tab-pane fade in show active" id="panel5" role="tabpanel">
+                        <router-outlet></router-outlet>
+                    </div>
+                    <!--/.Panel 1-->
+                    <!--Panel 2-->
+
+
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-secondary btn-sm waves-light" data-dismiss="modal" (click)="centralLarge.hide()" mdbWavesEffect>Close</button>
+                    <button type="button" class="btn btn-primary btn-sm waves-light" mdbWavesEffect>Save changes</button> -->
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</div>
+
+
+<div mdbModal #fluidRight2="mdb-modal" class="modal fade" id="modalShedule" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header d-flex justify-content-center" style="    background-color: #8ea6b1;;">
+                <h4 class="modal-title" id="myModalLabel">
+                    <i class="fa fa-table pr-1" aria-hidden="true"></i>
+                    <strong> &nbsp; {{titleShedule}}</strong>
+                </h4>
+
+            </div>
+            <!--Body-->
+            <div class="modal-body">
+
+                <table class="table table-hover">
+                    <thead style="box-shadow: 7px 4px 4px 1px rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);" class="blue-grey lighten-4 sheduleTable">
+                        <tr style="  box-shadow: 8px 4px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);">
+                            <th>Day</th>
+                            <th>8.00am - 6.00pm</th>
+                            <th>6.00am - 10.00am</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tbodyShedule" style="box-shadow: 7px 4px 4px 1px rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);">
+                        <tr>
+                            <th id="sideTh" scope="row">SUN</th>
+                            <td>
+
+                                ID02234 / ID02234
+                            </td>
+                            <td>
+                                ID02234 / ID02234
+                            </td>
+                        </tr>
+                        <tr>
+                            <th id="sideTh" scope="row">MON</th>
+                            <td>
+                                ID02234 / ID02234
+                            </td>
+                            <td>
+                                ID02234 / ID02234
+                            </td>
+                        </tr>
+                        <tr>
+                            <th id="sideTh" scope="row">TUE</th>
+                            <td>
+                                ID02234 / ID02234
+                            </td>
+                            <td>
+                                ID02234 / ID02234
+                            </td>
+                        </tr>
+                        <tr>
+                            <th id="sideTh" scope="row">WED</th>
+                            <td>
+                                ID02234 / ID02234
+                            </td>
+                            <td>
+                                ID02234 / ID02234
+                            </td>
+                        </tr>
+                        <tr>
+                            <th id="sideTh" scope="row">THU</th>
+                            <td>
+                                ID02234 / ID02234
+                            </td>
+                            <td>
+                                ID02234 / ID02234
+                            </td>
+                        </tr>
+                        <tr>
+                            <th id="sideTh" scope="row">FRI</th>
+                            <td>
+                                ID02234 / ID02234
+                            </td>
+                            <td>
+                                ID02234 / ID02234
+                            </td>
+                        </tr>
+                        <tr>
+                            <th id="sideTh" scope="row">SAT</th>
+                            <td>
+                                ID02234 / ID02234
+                            </td>
+                            <td>
+                                ID02234 / ID02234
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+            <!--Footer-->
+            <div class="modal-footer d-flex justify-content-center">
+                <button type="button" class="btn btn-outline-default " data-dismiss="modal">Close</button>
+                <button  (click)="convert()" type="button" class="btn btn-outline-default " data-dismiss="modal"><i class="fa fa-file-excel-o" aria-hidden="true"></i>&nbsp;&nbsp;Download</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<!-- Nav tabs -->
+<div mdbModal #fluidRight1="mdb-modal" class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalRemove"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+        <!--Content-->
+        <div class="modal-content text-center">
+            <!--Header-->
+            <div class="modal-header d-flex justify-content-center">
+                <p class="heading">Are you sure?</p>
+            </div>
+
+            <!--Body-->
+            <div class="modal-body">
+
+                <i class="fa fa-times fa-4x animated rotateIn"></i>
+
+            </div>
+
+            <!--Footer-->
+            <div class="modal-footer flex-center">
+                <button type="button" class="btn  btn-outline-danger" mdbWavesEffect (click)="onRemove();launch_toast()" data-dismiss="modal"
+                    (click)="fluidRight1.hide()">Yes</button>
+                <!-- <a class="btn  btn-outline-danger">Yes</a> -->
+                <!-- <a type="button" class="btn  btn-danger waves-effect" data-dismiss="modal">No</a> -->
+                <button type="button" class="btn  btn-danger" mdbWavesEffect data-dismiss="modal" (click)="fluidRight1.hide()">No</button>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+</div>
+
+<div id="toast">
+    <div id="img">
+        <i class="fa fa-check" aria-hidden="true"></i>
+    </div>
+    <div id="desc">Success Fully Removed...!</div>
+</div>
+
+<div id="toast1">
+    <div id="img">
+        <i class="fa fa-check" aria-hidden="true"></i>
+    </div>
+    <div id="desc">Success Fully Assinged...!</div>
+</div>
+

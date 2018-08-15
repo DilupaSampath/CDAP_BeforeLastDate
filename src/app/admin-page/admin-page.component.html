@@ -1,0 +1,104 @@
+<div class="card ">
+<!--Table-->
+
+<table class="table">
+
+    <!--Table head-->
+    <thead class="blue-grey lighten-4">
+        <tr>
+            <th>Ward</th>
+            <th>Capacity</th>
+            <th>Patient Count Per nurse</th>
+            <th>Working Shifts</th>
+            <th>Priority</th>
+            <th></th>
+        </tr>
+    </thead>
+    <!--Table head-->
+
+    <!--Table body-->
+    <tbody>
+        <tr *ngFor="let adminRecord of adminRecord ">
+            <th scope="row">{{ adminRecord.ward }}</th>
+            <td>{{ adminRecord.capacity }}</td>
+            <td>{{ adminRecord.perNurse }}</td>
+            <td>{{ adminRecord.shifts }}</td>
+
+            <td>
+                <span *ngIf=" adminRecord.priority=='Low'" class="badge badge-success badge-pill ">{{ adminRecord.priority }}</span>
+                <span *ngIf=" adminRecord.priority=='Medium'" class="badge badge-warning badge-pill ">{{ adminRecord.priority }}</span>
+                <span *ngIf=" adminRecord.priority=='High'" class="badge badge-danger badge-pill ">{{ adminRecord.priority }}</span>
+            </td>
+            <td class="round">
+                    <button  type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
+                        <i class="fa fa-pencil mt-0" style="color: brown"></i>
+                    </button>
+                </td>
+        </tr>
+        
+    </tbody>
+    <!--Table body-->
+
+</table>
+<hr>
+<div class="row">
+    <div class="col">
+        <button  class="btn btn-primary btn-md" (click)="onCreateRecords()">Save Changes</button>
+
+    </div>
+
+</div>
+</div>
+<!--Table-->
+<br><br><br>
+
+<!--Table-->
+<div class="card">
+<table class="table">
+
+    <!--Table head-->
+    <thead class="mdb-color darken-3">
+        <tr class="text-white">
+            <th>Logic Type</th>
+            <th>Name</th>
+            <th>Action</th>
+            <th></th>
+            <!-- <th>Username</th> -->
+        </tr>
+    </thead>
+    <!--Table head-->
+
+    <!--Table body-->
+    <tbody>
+        <tr *ngFor="let adminLogic of  adminLogics">
+            <th scope="row">{{ adminLogic.type }}</th>
+            <td>{{ adminLogic.name }}</td>
+            <td>
+                <span (click)="setLogicModels( adminLogic.type, adminLogic.name, 'true')"  style="background-color: darkcyan" class="badge  badge-pill ">Apply</span>
+                <span (click)="setLogicModels( adminLogic.type, adminLogic.name, 'false')" style="background-color: grey" class="badge  badge-pill ">Stop</span>
+            </td>
+            <td>
+                    <label   *ngIf="adminLogic.status=='true'" class="badge badge-success animated flash infinite">
+                            Live
+                        </label>
+
+                    <label *ngIf="adminLogic.status=='false'" class="badge badge-danger">
+                            Offline
+                        </label>
+            </td>
+        </tr>
+       
+    </tbody>
+    <!--Table body-->
+
+</table><hr>
+<div class="row">
+    <div class="col">
+        <button (click)="onCreateLogic()" class="btn btn-primary btn-md">Save Changes</button>
+
+    </div>
+
+</div>
+</div>
+<!--Table-->
+<!-- <img class="animated flash infinite" src="https://mdbootstrap.com/img/logo/mdb-transparent.png"> -->

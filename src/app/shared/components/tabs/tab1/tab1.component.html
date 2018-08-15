@@ -1,0 +1,56 @@
+ <div class="cotainer">
+ <div class="btn-group btn-group-toggle" data-toggle="buttons">
+    <label class="btn"  [ngStyle]="{'background-color': buttonColor1}">
+      <input (click)="addEvent1();" type="checkbox" name="options" id="option1" autocomplete="off"> Mon1
+    </label>
+    <label class="btn"  [ngStyle]="{'background-color': buttonColor2}">
+      <input (click)="addEvent2();" type="checkbox" name="options" id="option2" autocomplete="off"> Mon2
+    </label>
+    <label class="btn"  [ngStyle]="{'background-color': buttonColor3}">
+      <input (click)="addEvent3();" type="checkbox" name="options" id="option3" autocomplete="off"> Mon3
+    </label>
+    <label class="btn"  [ngStyle]="{'background-color': buttonColor4}">
+      <input (click)="addEvent4();" type="checkbox" name="options" id="option3" autocomplete="off"> Mon4
+    </label>
+  </div>
+</div>
+  <table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Week</th>
+            <th>Patients per nurse</th>
+            <th>Leave Posibility</th>
+            <th>Avalable  </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr  *ngFor="let item of leaveList; let i = index">
+            <th scope="row">{{ item.week }}</th>
+            <td>{{ item.patient }}</td>
+            <td>
+              <span *ngIf=" item.avalable >= 5" class="badge badge-success badge-pill ">&nbsp;&nbsp;&nbsp;High&nbsp;&nbsp;&nbsp;</span>
+              <span *ngIf=" item.avalable <= 1" class="badge badge-danger badge-pill ">&nbsp;&nbsp;&nbsp;Low&nbsp;&nbsp;&nbsp;</span>
+              <span *ngIf=" item.avalable <5 && item.avalable >1" class="badge badge-warning badge-pill ">&nbsp;&nbsp;&nbsp;Medium&nbsp;&nbsp;&nbsp;</span>
+            </td>
+            <td>{{ item.avalable }}</td>
+            <td><button class='badge badge-default' (click)="applyLeave(i)">Apply</button></td>
+          </tr>
+        <!-- <tr>
+          <th scope="row">2</th>
+          <td>8</td>
+          <td><span class="badge badge-warning badge-pill ">Medium</span></td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>10</td>
+          <td><span class="badge badge-danger badge-pill ">&nbsp;&nbsp;&nbsp;&nbsp;Low &nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+        <tr>
+          <th scope="row">4</th>
+          <td>9</td>
+          <td><span class="badge badge-warning badge-pill ">Medium</span></td>
+        </tr> -->
+        
+    </tbody>
+</table>

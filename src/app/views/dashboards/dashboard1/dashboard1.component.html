@@ -1,0 +1,486 @@
+<!-- Heading -->
+<div class="card mb-4 wow fadeIn">
+
+  <!--Card content-->
+  <div class="card-body d-sm-flex justify-content-between">
+
+    <h4 class="mb-sm-0 pt-3">
+      <a href="https://mdbootstrap.com/material-design-for-bootstrap/" target="_blank">Home Page</a>
+      <span>/</span>
+      <span>Dashboard</span>
+    </h4>
+
+    <form class="d-flex md-form justify-content-center">
+      <!-- Default input -->
+      <input type="search" placeholder="Type your query" aria-label="Search" class="form-control">
+      <button class="btn btn-primary btn-sm my-0 p" type="submit">
+        <i class="fa fa-search"></i>
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+<!-- Heading -->
+
+
+
+<app-stats-card></app-stats-card>
+
+
+
+<!--Grid row-->
+<div class="row wow fadeIn mt-5">
+
+  <!--Grid column-->
+  <div class="col-md-9 mb-4">
+
+    <!--Card-->
+    <div class="card">
+        <div class="card-header text-center">
+            Patient Count Prediction - Upcomming Months
+           </div>
+     
+      <!--Card content-->
+      <div class="card-body">
+
+        <div style="display: block">
+          <canvas mdbChart [chartType]="chart1Type" [datasets]="chartDatasets" [labels]="chartLabels" [colors]="chartColors" [options]="chartOptions"
+            [legend]="true">
+          </canvas>
+        </div>
+      </div>
+
+    </div>
+    <!--/.Card-->
+
+  </div>
+  <!--Grid column-->
+
+  <!--Grid column-->
+  <div class="col-md-3 mb-4">
+<!--Card-->
+<div class="card mb-4">
+  <div class="card-header text-center">
+      Next Week
+     </div>
+<!--Card content-->
+<div class="card-body" style="margin-left: -20px;">
+
+
+
+  <!-- List group links -->
+  <div class="list-group list-group-flush">
+    <a class="list-group-item list-group-item-action waves-effect">Patients
+      <span class="badge badge-danger badge-pill pull-right">22%
+        <i class="fa fa-arrow-up ml-1"></i>
+      </span>
+    </a>
+    <a class="list-group-item list-group-item-action waves-effect">Avalability
+      <span class="badge badge-success badge-pill pull-right">5%
+        <i class="fa fa-arrow-down ml-1"></i>
+      </span>
+    </a>
+    <a class="list-group-item list-group-item-action waves-effect">Free Nurses
+      <span class="badge badge-primary badge-pill pull-right">14</span>
+    </a>
+    <a class="list-group-item list-group-item-action waves-effect">Free beds
+      <span class="badge badge-primary badge-pill pull-right">54</span>
+    </a>
+  
+  </div>
+  <!-- List group links -->
+
+</div>
+
+</div>
+<!--/.Card-->
+    
+
+    
+
+  </div>
+  <!--Grid column-->
+
+</div>
+<!--Grid row-->
+
+<!--Grid row-->
+<div class="row wow fadeIn">
+
+  <!--Grid column-->
+  <div class="col-md-6 mb-4">
+
+    <!--Card-->
+    <div class="card">
+
+      <!--Card content-->
+      <div class="card-body">
+
+        <!-- Table  -->
+        <table class="table table-hover">
+          <!-- Table head -->
+          <thead class="blue-grey lighten-4">
+            <tr>
+              <th>District</th>
+              <th>Current</th>
+              <th>Next week</th>
+              <th>Priority</th>
+            </tr>
+          </thead>
+          <!-- Table head -->
+
+          <!-- Table body -->
+          <tbody>
+            <tr>
+              <th scope="row">Colombo</th>
+              <td>200</td>
+              <td>27</td>
+              <td >Medium</td>
+            </tr>
+            <tr>
+              <th scope="row">Gampaha</th>
+              <td>160</td>
+              <td>20</td>
+              <td>Medium</td>
+            </tr>
+            <tr>
+              <th scope="row">Kaluthara</th>
+              <td>100</td>
+              <td>70</td>
+              <td>High</td>
+            </tr>
+          </tbody>
+          <!-- Table body -->
+        </table>
+        <!-- Table  -->
+
+      </div>
+
+    </div>
+    <!--/.Card-->
+
+  </div>
+  <!--Grid column-->
+
+  <!--Grid column-->
+  <div class="col-md-6 mb-4">
+
+    <!--Card-->
+    <div class="card">
+
+      <!--Card content-->
+      <div class="card-body">
+
+        <!-- Table  -->
+        <table class="table table-hover">
+          <!-- Table head -->
+          <thead class="blue lighten-4">
+            <tr>
+              <th>Ward</th>
+              <th>Current</th>
+              <th>Next week</th>
+              <th>Priority</th>
+            </tr>
+          </thead>
+          <!-- Table head -->
+
+          <!-- Table body -->
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>300</td>
+              <td>50</td>
+              <td>High</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>200</td>
+              <td>30</td>
+              <td>Medium</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>230</td>
+              <td>10</td>
+              <td>Low</td>
+            </tr>
+          </tbody>
+          <!-- Table body -->
+        </table>
+        <!-- Table  -->
+
+      </div>
+
+    </div>
+    <!--/.Card-->
+
+  </div>
+  <!--Grid column-->
+
+</div>
+<!--Grid row-->
+
+<!--Grid row-->
+<div class="row wow fadeIn">
+
+  <!--Grid column-->
+  <div class="col-lg-3 ">
+
+    <!--Card-->
+    <!-- <div class="card">
+
+
+      <div class="card-header">Next Week Patients</div>
+
+      <div class="card-body">
+
+        <div style="display: block">
+          <canvas mdbChart [chartType]="chart3Type" [datasets]="chartDatasets" [labels]="chartLabels2" [colors]="chartColors" [options]="chartOptions"
+            [legend]="true">
+          </canvas>
+        </div>
+      </div>
+
+    </div> -->
+    <div class="card">
+      
+      <div (click)="clickWard('ward1')">
+            <div class="card-header">Ward 1 - Ward Changers</div>
+            <!--Card content-->
+            <div class="card-body">
+              <div class="card" style="display: block">
+                <canvas mdbChart
+                    [chartType]="chartType1"
+                    [data]="chartData1"
+                    [labels]="chartLabels1"
+                    [colors]="chartColors1"
+                    [options]="chartOptions1"
+                    [legend]="true"
+                    >
+                    <!-- (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)" -->
+                </canvas>
+              </div>
+              
+            </div>
+          <!--/.Card-->
+      
+      </div>
+        </div>
+
+
+  </div>
+  <!--Grid column-->
+
+  <!--Grid column-->
+  <div  class="col-lg-3 ">
+
+  
+    <!-- <div class="card">
+
+  
+      <div class="card-header">somthing</div>
+
+       <div class="card-body">
+
+        <div style="display: block">
+          <canvas mdbChart [chartType]="chart4Type" [datasets]="chartDatasets" [labels]="chartLabels" [colors]="chartColors" [options]="chartOptions"
+            [legend]="true">
+          </canvas>
+        </div>
+      </div>
+
+    </div>
+   -->
+   <div class="card">
+    
+    <div (click)="clickWard('ward2')">
+          <div class="card-header">Ward 2 - Ward Changers</div>
+          <!--Card content-->
+          <div class="card-body">
+            <div class="card" style="display: block">
+              <canvas mdbChart
+                  [chartType]="chartType1"
+                  [data]="chartData2"
+                  [labels]="chartLabels1"
+                  [colors]="chartColors1"
+                  [options]="chartOptions1"
+                  [legend]="true"
+     >
+     <!-- (chartHover)="chartHovered($event)"
+     (chartClick)="chartClicked($event)" -->
+              </canvas>
+            </div>
+            
+          </div>
+        <!--/.Card-->
+    
+    </div>
+      </div>
+  </div>
+  <!--Grid column-->
+
+  <!--Grid column-->
+  <div  class="col-lg-3 ">
+<!-- 
+    <div class="card">
+
+
+      <div class="card-header">somthing</div>
+
+      <div class="card-body">
+
+        <div style="display: block">
+          <canvas mdbChart [chartType]="chart5Type" [datasets]="chartDatasets" [labels]="chartLabels" [colors]="chartColors" [options]="chartOptions"
+            [legend]="true">
+          </canvas>
+        </div>
+      </div>
+
+    </div> -->
+    <div class="card">
+      
+      <div (click)="clickWard('ward3')">
+            <div class="card-header">Ward 3 - Ward Changers</div>
+            <!--Card content-->
+            <div class="card-body">
+              <div class="card" style="display: block">
+                <canvas mdbChart
+                    [chartType]="chartType1"
+                    [data]="chartData3"
+                    [labels]="chartLabels1"
+                    [colors]="chartColors1"
+                    [options]="chartOptions1"
+                    [legend]="true"
+        >
+        <!-- (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)" -->
+                </canvas>
+              </div>
+              
+            </div>
+          <!--/.Card-->
+      
+      </div>
+        </div>
+  </div>
+  <!--Grid column-->
+  <div class="col-md-3 mb-4">
+    <!--Card-->
+    <div class="card mb-4">
+      <div class="card-header text-center">
+          {{ wardTitle }}
+         </div>
+    <!--Card content-->
+    <div class="card-body" style="    margin-left: -20px;">
+      <!-- List group links -->
+      <div class="list-group list-group-flush">
+        <a class="list-group-item list-group-item-action waves-effect">Patients
+          <span  [ngStyle]="{'visibility': visibility}" class="badge badge-danger badge-pill pull-right">{{ patientCountW }}
+            <i class="fa fa-arrow-up ml-1"></i>
+          </span>
+        </a>
+        <a class="list-group-item list-group-item-action waves-effect">Next Week Patients
+          <span  [ngStyle]="{'visibility': visibility}" class="badge badge-success badge-pill pull-right">
+           {{ nextWeekPatients }}
+          </span>
+        </a>
+        <a class="list-group-item list-group-item-action waves-effect">Allocated Nurses
+          <span  [ngStyle]="{'visibility': visibility}" class="badge badge-primary badge-pill pull-right">
+            {{ nextweekNurses }}
+          </span>
+        </a>
+        <a class="list-group-item list-group-item-action waves-effect">Avalability- {{ aWard }}
+          <span  [ngStyle]="{'visibility': visibility}" class="badge badge-primary badge-pill pull-right">
+            {{ availabilityA }}
+          </span>
+        </a>
+      
+      </div>
+      <!-- List group links -->
+    
+    </div>
+    
+    </div>
+    <!--/.Card-->
+        
+    
+        
+    
+      </div>
+
+</div>
+<!--Grid row-->
+
+<!--Grid row-->
+<div class="row wow fadeIn">
+
+  <!--Grid column-->
+  <div class="col-md-6 mb-4">
+
+    <!--Card-->
+    <div class="card">
+
+      <!-- Card header -->
+      <div class="card-header">Dengue High Risk Zones</div>
+
+      <!--Card content-->
+      <div class="card-body">
+
+        <!--Google map-->
+        <div class="card-body text-center">
+          <agm-map [latitude]="map.lat" [longitude]="map.lng" [mapTypeId]="'roadmap'" style="height: 300px">
+            <agm-marker [latitude]="map.lat" [longitude]="map.lng"></agm-marker>
+          </agm-map>
+
+        </div>
+      </div>
+
+    </div>
+    <!--/.Card-->
+
+  </div>
+  <!--Grid column-->
+
+  <!--Grid column-->
+  <div class="col-lg-4 col-md-12 mb-4">
+<!-- 
+    <div class="card">
+
+<div>
+      <div class="card-header">Modals</div>
+
+      <div class="card-body">
+        <div class="card" style="display: block">
+          <canvas mdbChart
+              [chartType]="chartType1"
+              [data]="chartData1"
+              [labels]="chartLabels1"
+              [colors]="chartColors1"
+              [options]="chartOptions1"
+              [legend]="true"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)">
+          </canvas>
+        </div>
+        
+      </div>
+
+
+</div> -->
+  </div>
+  <!--Grid column-->
+
+
+</div>
+<!--Grid row-->
+
+<!-- 
+<app-stats-card2></app-stats-card2> -->
+    
+
+
+
+ 

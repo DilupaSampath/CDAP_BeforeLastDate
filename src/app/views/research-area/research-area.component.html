@@ -1,0 +1,594 @@
+<div class="row" style="position: fixed;z-index: 100;width: 448px;">
+  <nav class="breadcrumb">
+    <span  class="breadcrumb-item">Research Area</span>
+  </nav>
+  <!-- <nav class="breadcrumb">
+      <span class="breadcrumb-item">Research Area</span>
+    </nav> -->
+    
+</div>
+<div id="Global"></div>
+<div class="fixed-plugin faa-horizontal faa-slow animated ">
+    <div  class="dropdown show-dropdown" style="height: 27px;">
+        <a (click)="navigate('Global')" data-toggle="modal" mdbWavesEffect>
+            <i class="fa fa-angle-double-up" aria-hidden="true">Up</i>  
+        </a>
+    </div>
+</div>
+<div class="fixed-plugin faa-asd faa-slow animated asd " style="    margin-top: 514px;">
+    <div class="dropdown show-dropdown" style="height: 27px;">
+        <a (click)="navigate('IDH')"  data-toggle="modal" mdbWavesEffect>
+            <i class="fa fa-angle-double-down" aria-hidden="true">Down</i>  
+        </a>
+    </div>
+</div>
+<section>
+   
+<div style="   position: relative;z-index: 10;margin-top: -27px;">
+ 
+<div class="row"  style="    color: white;position: absolute;margin-top: 66px;font-family: sans-serif;font-size: 20px;font-weight: 600;">
+    Global
+</div>
+
+  <article id="slider">
+
+    <input checked type='radio' name='slider' id='slide1' />
+    <input type='radio' name='slider' id='slide2' />
+    <input type='radio' name='slider' id='slide3' />
+    <input type='radio' name='slider' id='slide4' />
+    <input type='radio' name='slider' id='slide5' />
+    <div id="slides" style="background: transparent;    border-color: transparent;">
+      <div id="container" style="    margin-top: -35px;">
+        <div class="inner" style="    margin-top: 47px;">
+          <!-- <article>
+              <img src="http://placehold.it/942X400"/>
+              </article> -->
+          <article>
+
+            <div class="col-md-9 mb-4" style="    margin-left: 122px;margin-top: 10px;    position: relative;">
+              <div class="card">
+                <div class="card-header text-center" style="    height: 40px;">
+                  <div class='caption ' style="margin-top: -333PX;margin-left: -34px;width: 685px;">
+                    <bar style="width: 689px;">Srilanka Dengue Patient Count Comparison - Last 3 years</bar>
+                  </div>
+                </div>
+
+                <div class="card-body" style="    margin-top: 29px;z-index: 10">
+
+                  <div style="display: block">
+                    <canvas mdbChart [chartType]="chart1Type" [datasets]="chartDatasets" [labels]="chartLabels" [colors]="chartColors" [options]="chartOptions"
+                      [legend]="true">
+                    </canvas>
+                  </div>
+                </div>
+
+              </div>
+
+
+            </div>
+
+          </article>
+          <article>
+            <div class="col-md-9 mb-4" style="    margin-left: 122px;margin-top: 10px;    position: relative;">
+              <div class="card">
+                <div class="card-header text-center" style="    height: 40px;">
+                  <div class='caption ' style="margin-top: -333PX;margin-left: -34px;width: 685px;">
+                    <bar style="width: 689px;">Western Province Dengue Patient Count Comparison (Last Year - This Year)</bar>
+                  </div>
+                </div>
+
+                <div class="card-body" style="    margin-top: 29px;z-index: 10">
+
+                  <div style="display: block">
+                    <canvas mdbChart [chartType]="chart1Type" [datasets]="chartDatasets1" [labels]="chartLabels" [colors]="chartColors" [options]="chartOptions"
+                      [legend]="true">
+                    </canvas>
+                  </div>
+                </div>
+
+              </div>
+
+
+            </div>
+          </article>
+          <article>
+            <div class="col-md-9 mb-4" style="    margin-left: 122px;margin-top: 10px;    position: relative;">
+              <div class="card">
+                <div class="card-header text-center" style="    height: 40px;">
+                  <div class='caption ' style="margin-top: -333PX;margin-left: -34px;width: 685px;">
+                    <bar style="width: 689px;">Colombo District Dengue Patient Count Comparison (Last Year - This Year)</bar>
+                  </div>
+                </div>
+
+                <div class="card-body" style="    margin-top: 29px;z-index: 10">
+
+                  <div style="display: block">
+                    <canvas mdbChart [chartType]="chart1Type" [datasets]="chartDatasets1" [labels]="chartLabels" [colors]="chartColors" [options]="chartOptions"
+                      [legend]="true">
+                    </canvas>
+                  </div>
+                </div>
+
+              </div>
+
+
+            </div>
+          </article>
+          <article>
+            <div class='caption' style="margin-top: -333PX;margin-left: -34px;width: 685px;">
+              <bar style="width: 689px;">A Pink Flower</bar>
+            </div>
+            <div id="map"></div>
+          </article>
+        </div>
+      </div>
+    </div>
+    <div id="commands">
+      <label for='slide1'></label>
+      <label for='slide2'></label>
+      <label for='slide3'></label>
+      <label for='slide4'></label>
+      <label for='slide5'></label>
+    </div>
+    <div id="active" style="visibility: hidden;">
+      <label for='slide1'></label>
+      <label for='slide2'></label>
+      <label for='slide3'></label>
+      <label for='slide4'></label>
+      <label for='slide5'></label>
+    </div>
+  </article>
+
+  <div class="row card" style="margin-top: 35px;height: auto;    color: white;background: #0000006b;">
+    <div class="col-lg-5" style="margin-top: 22px">
+
+      <!-- Default form register -->
+      <form>
+        <p class="h4 text-center mb-4">Compare District Patient Counts</p>
+
+        <!-- Default input name -->
+        <select class="mdb-select dropdown-primary form-control">
+          <option>Select District</option>
+          <option *ngFor="let district of districtArray">{{district}}</option>
+        </select>
+        <br>
+        <select class="mdb-select dropdown-primary form-control">
+          <option>Select Year</option>
+          <option *ngFor="let year of yearArray">{{year}}</option>
+
+
+        </select>
+
+        <br>
+
+        <!-- Default input email -->
+        <select class="mdb-select dropdown-primary form-control">
+          <option>Select Month1</option>
+          <option *ngFor="let month of monthArray">{{month}}</option>
+        </select>
+
+        <br>
+
+        <!-- Default input email -->
+        <select class="mdb-select dropdown-primary form-control">
+          <option>Select Month2</option>
+          <option *ngFor="let month of monthArray">{{month}}</option>
+        </select>
+
+        <br>
+
+        <!-- Default input password -->
+        <!-- <label for="defaultFormRegisterPasswordEx" class="grey-text">Your password</label>
+            <input type="password" id="defaultFormRegisterPasswordEx" class="form-control"> -->
+
+        <div class="text-center mt-4">
+          <button class="btn btn-unique" type="submit">Compair</button>
+        </div>
+
+
+
+
+      </form>
+
+
+
+    </div>
+    <div class="col-lg-5" style="margin-top: -391px;margin-left: 530px;">
+      <form>
+        <!-- <p class="h4 text-center mb-4">Compare District Patient Counts</p> -->
+
+
+        <!-- <select class="mdb-select dropdown-primary form-control">
+                <option>Select Year</option>
+                <option *ngFor="let year of yearArray">{{year}}</option>
+  
+  
+            </select>
+        
+            <br>
+
+            <select class="mdb-select dropdown-primary form-control">
+                <option>Select Month1</option>
+                <option *ngFor="let month of monthArray">{{month}}</option>
+            </select>
+        
+            <br>
+        
+
+            <select class="mdb-select dropdown-primary form-control">
+                <option>Select Month2</option>
+                <option *ngFor="let month of monthArray">{{month}}</option>
+            </select>
+        
+            <br>
+        
+  
+        
+            <div class="text-center mt-4">
+                <button class="btn btn-unique" type="submit">Compair</button>
+            </div> -->
+
+        <!--Table-->
+        <div class="row" style="margin-top: -64px;">
+          <div class="col-md-8"> Higest patient count recoded: </div>
+          <div class="col">
+            <strong class=" badge badgeValue" mdbWavesEffect>Colombo</strong>
+          </div>
+          <br>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8"> Patient count : </div>
+            <div class="col">
+              <strong class=" badge badgeValue" mdbWavesEffect>200</strong>
+            </div>
+            <br>
+          </div>
+<br>
+          <div class="row" >
+              <div class="col-md-8"> Higest rainfall recoded: </div>
+              <div class="col">
+                <strong class=" badge badgeValue" mdbWavesEffect>Gampaha</strong>
+              </div>
+              <br>
+            </div>
+
+            <div class="row" >
+                <div class="col-md-8">  Rainfall :</div>
+                <div class="col">
+                  <strong class=" badge badgeValue" mdbWavesEffect>200</strong>
+                </div>
+                <br>
+              </div>
+<br>
+ 
+        <table class="table table-borderless">
+
+          <!--Table head-->
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Month1</th>
+              <th>Month2</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <!--Table head-->
+
+          <!--Table body-->
+          <tbody>
+            <tr>
+              <th scope="row">Patient Count</th>
+              <td>100</td>
+              <td>120</td>
+              <td>
+                <span class="badge badge-warning">Close Matched</span>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Rainfall</th>
+              <td>100</td>
+              <td>200</td>
+              <td>
+                <span class="badge badge-danger">High Differance</span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <hr style="background: white">
+              </td>
+              <td>
+                <hr style="background: white">
+              </td>
+              <td>
+                <hr style="background: white">
+              </td>
+              <td>
+                <hr style="background: white">
+              </td>
+
+            </tr>
+     
+            <tr>
+              <th scope="row">Compaired to Colobmo</th>
+              <td>-100</td>
+              <td>-80</td>
+              <td>
+                <img style="width: 43px;height: 43px;" src="http://www.uidownload.com/files/794/498/528/freezing-rain-icon.png"
+                  alt=""> </td>
+
+            </tr>
+            <tr>
+              <th scope="row">Compaired to Gampaha</th>
+              <td>-100</td>
+              <td>-80</td>
+              <td>
+                <img style="width: 43px;height: 43px;" src="http://icons.iconarchive.com/icons/graphicloads/medical-health/128/patient-2-icon.png"
+                  alt="">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <hr style="background: white">
+              </td>
+              <td>
+                <hr style="background: white">
+              </td>
+              <td>
+                <hr style="background: white">
+              </td>
+              <td>
+                <hr style="background: white">
+              </td>
+            </tr>
+          </tbody>
+          <!--Table body-->
+
+        </table>
+        <!--Table-->
+
+
+      </form>
+
+    </div>
+  </div>
+
+
+
+
+</div>
+
+<particles [params]="params" [style]="myStyle">
+</particles>
+</section>
+<section>
+    <div class="row" style="    color: white;position: absolute;margin-top: 66px;font-family: sans-serif;font-size: 20px;font-weight: 600;">
+        Global
+    </div>
+    
+    <div style="   position: relative;z-index: 10;margin-top: -27px;">
+  
+     
+    
+      <div class="row card" style="margin-top: 35px;height: auto;    color: white;background: #0000006b;">
+        <div class="col-lg-5" style="margin-top: 22px">
+    
+          <!-- Default form register -->
+          <form>
+            <p class="h4 text-center mb-4">Compare Future District Patient Counts</p>
+    
+            <!-- Default input name -->
+            <select class="mdb-select dropdown-primary form-control">
+              <option>Select District</option>
+              <option *ngFor="let district of districtArray">{{district}}</option>
+            </select>
+            <br>
+            <select class="mdb-select dropdown-primary form-control">
+              <option>Select Year</option>
+              <option *ngFor="let year of yearArrayNext">{{year}}</option>
+    
+    
+            </select>
+    
+            <br>
+    
+            <!-- Default input email -->
+            <select class="mdb-select dropdown-primary form-control">
+              <option>Select Month</option>
+              <option *ngFor="let month of monthArray">{{month}}</option>
+            </select>
+    
+            <br>
+    
+            <!-- Default input email -->
+            <!-- <select class="mdb-select dropdown-primary form-control">
+              <option>Select Month2</option>
+              <option *ngFor="let month of monthArray">{{month}}</option>
+            </select>
+    
+            <br> -->
+    
+            <!-- Default input password -->
+            <!-- <label for="defaultFormRegisterPasswordEx" class="grey-text">Your password</label>
+                <input type="password" id="defaultFormRegisterPasswordEx" class="form-control"> -->
+    
+            <div class="text-center mt-4">
+              <button class="btn btn-unique" type="submit">View</button>
+            </div>
+    
+    
+    
+    
+          </form>
+    
+    
+    
+        </div>
+        <div class="col-lg-5" style="margin-top: -338px;margin-left: 530px;">
+          <form>
+            <!-- <p class="h4 text-center mb-4">Compare District Patient Counts</p> -->
+    
+    
+            <!-- <select class="mdb-select dropdown-primary form-control">
+                    <option>Select Year</option>
+                    <option *ngFor="let year of yearArray">{{year}}</option>
+      
+      
+                </select>
+            
+                <br>
+    
+                <select class="mdb-select dropdown-primary form-control">
+                    <option>Select Month1</option>
+                    <option *ngFor="let month of monthArray">{{month}}</option>
+                </select>
+            
+                <br>
+            
+    
+                <select class="mdb-select dropdown-primary form-control">
+                    <option>Select Month2</option>
+                    <option *ngFor="let month of monthArray">{{month}}</option>
+                </select>
+            
+                <br>
+            
+      
+            
+                <div class="text-center mt-4">
+                    <button class="btn btn-unique" type="submit">Compair</button>
+                </div> -->
+    
+            <!--Table-->
+            <div class="row" style="margin-top: -64px;">
+              <div class="col-md-8">Expected Higest patient count: </div>
+              <div class="col">
+                <strong class=" badge badgeValue" mdbWavesEffect>Colombo</strong>
+              </div>
+              <br>
+            </div>
+    
+            <div class="row">
+                <div class="col-md-8">Expected Patient count : </div>
+                <div class="col">
+                  <strong class=" badge badgeValue" mdbWavesEffect>200</strong>
+                </div>
+                <br>
+              </div>
+    <br>
+              <div class="row" >
+                  <div class="col-md-8">Expected Higest rainfall: </div>
+                  <div class="col">
+                    <strong class=" badge badgeValue" mdbWavesEffect>Gampaha</strong>
+                  </div>
+                  <br>
+                </div>
+    
+                <div class="row" >
+                    <div class="col-md-8"> Expected Rainfall :</div>
+                    <div class="col">
+                      <strong class=" badge badgeValue" mdbWavesEffect>200</strong>
+                    </div>
+                    <br>
+                  </div>
+    <br>
+     
+            <table class="table table-borderless">
+    
+              <!--Table head-->
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Month1</th>
+                  <th>Month2</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <!--Table head-->
+    
+              <!--Table body-->
+              <tbody>
+                <tr>
+                  <th scope="row">Patient Count</th>
+                  <td>100</td>
+                  <td>120</td>
+                  <td>
+                    <span class="badge badge-warning">Close Matched</span>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Rainfall</th>
+                  <td>100</td>
+                  <td>200</td>
+                  <td>
+                    <span class="badge badge-danger">High Differance</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <hr style="background: white">
+                  </td>
+                  <td>
+                    <hr style="background: white">
+                  </td>
+                  <td>
+                    <hr style="background: white">
+                  </td>
+                  <td>
+                    <hr style="background: white">
+                  </td>
+    
+                </tr>
+         
+                <tr>
+                  <th scope="row">Compaired to Colobmo</th>
+                  <td>-100</td>
+                  <td>-80</td>
+                  <td>
+                    <img style="width: 43px;height: 43px;" src="http://www.uidownload.com/files/794/498/528/freezing-rain-icon.png"
+                      alt=""> </td>
+    
+                </tr>
+                <tr>
+                  <th scope="row">Compaired to Gampaha</th>
+                  <td>-100</td>
+                  <td>-80</td>
+                  <td>
+                    <img style="width: 43px;height: 43px;" src="http://icons.iconarchive.com/icons/graphicloads/medical-health/128/patient-2-icon.png"
+                      alt="">
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <hr style="background: white">
+                  </td>
+                  <td>
+                    <hr style="background: white">
+                  </td>
+                  <td>
+                    <hr style="background: white">
+                  </td>
+                  <td>
+                    <hr style="background: white">
+                  </td>
+                </tr>
+              </tbody>
+              <!--Table body-->
+    
+            </table>
+            <!--Table-->
+    
+    
+          </form>
+    
+        </div>
+      </div>
+    
+    
+    
+    
+    </div>
+    
+    <particles [params]="params" [style]="myStyle">
+    </particles>
+    </section>
