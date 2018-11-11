@@ -221,10 +221,20 @@
                     <input [(ngModel)]="address" type="text" id="patient-address" class="form-control" mdbInputDirective [ngModelOptions]="{standalone: true}">
                     <label for="patient-address">Address</label>
                   </div> -->
-                                <div class="md-form">
+                                <!-- <div class="md-form">
                                     <i class="fa fa-tag prefix "></i>
                                     <input [(ngModel)]="gender" type="text" id="form-Gender" class="form-control" mdbInputDirective [ngModelOptions]="{standalone: true}">
                                     <label for="form-Gender">Gender</label>
+                                </div> -->
+                                <div class="md-form genderMargin    ">
+                                    <i class="fa fa-ambulance prefix " style="font-size:28px"></i>
+                                    <!--        <input [(ngModel)]="ward" type="text" id="Ward" class="form-control" mdbInputDirective [ngModelOptions]="{standalone: true}">
+                                    <label for="Ward">Ward</label> -->
+                                    <select id="gender" [(ngModel)]="gender" name="Select gender" value="Select gender"  class="form-control gender" style="    width: 89%;margin-left: 11%;">
+                                        <option selected disabled>Select gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Fe Male 2">Fe Male</option>
+                                      </select>
                                 </div>
                                 <div class="md-form">
                                     <i class="fa fa-tag prefix"></i>
@@ -273,12 +283,22 @@
                                     Actual Ward : &nbsp;<label class="badge badge-success WardSug" [ngStyle]="{'visibility': fittedWardBadgeVisibility,'color':'white'}" style=" font-size: 13px;margin-top: 2px;visibility: visible;position: fixed;"> {{ fittedWard1 }}</label>
                                 <div class="md-form" style="margin-top: 28px;">
                                     <i class="fa fa-envelope prefix "></i>
-                                    <input [(ngModel)]="ward" type="text" id="form-Ward" class="form-control" mdbInputDirective [ngModelOptions]="{standalone: true}">
-                                    <label for="form-Ward">Assigned Ward</label>
+                                    <select id="ward" [(ngModel)]="ward" name="Select ward" value="Select ward"  class="form-control ward" style="    width: 89%;margin-left: 11%;">
+                                        <option selected disabled>Select ward</option>
+                                        <option value="Ward 1">Ward 1</option>
+                                        <option value="Ward 2">Ward 2</option>
+                                        <option value="Ward 3">Ward 3</option>
+                                      </select>
+                                    <label *ngIf="false" for="form-Ward">Assigned Ward</label>
                                 </div>
                                 <div class="md-form">
                                     <i class="fa fa-tag prefix "></i>
-                                    <input [(ngModel)]="priority" type="text" id="form-Priority" class="form-control" mdbInputDirective [ngModelOptions]="{standalone: true}">
+                                   <select id="priority" [(ngModel)]="priority" name="Select Priority" value="Select Priority"  class="form-control priority" style="    width: 89%;margin-left: 11%;">
+                                        <option selected disabled>Select Priority</option>
+                                        <option value="Low">Low</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="High">High</option>
+                                      </select>
                                     <label for="form-Priority">Priority</label>
                                 </div>
                                 <div class="md-form">

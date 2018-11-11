@@ -14,7 +14,8 @@ export class AdminPageComponent implements OnInit {
   shifts:any;
   priority:any;
   adminLogics:any[];
-  name:any;
+  _id:any;
+  algorithmNo:any;
   type:any;
   status:any;
   Color1:any;
@@ -29,19 +30,19 @@ export class AdminPageComponent implements OnInit {
     this.getAdminLogic();
   }
   getAdminRecords() {
-    this.http.get('http://127.0.0.1:5000/adminRecords/').subscribe(
-      (data: any[]) => {
-        console.log("an init works--> " + JSON.stringify(data));
-        this.adminRecord = data;
+    // this.http.get('http://127.0.0.1:5000/adminRecords/').subscribe(
+    //   (data: any[]) => {
+    //     console.log("an init works--> " + JSON.stringify(data));
+    //     this.adminRecord = data;
        
-      }
-    );
+    //   }
+    // );
   }
   getAdminLogic(){
-    this.http.get('http://127.0.0.1:5000/adminLogic/').subscribe(
+    this.http.get('http://127.0.0.1:3000/api/algorithm/getAll').subscribe(
       (data: any[]) => {
-        console.log("an init works--> " + JSON.stringify(data));
-        this.adminLogics=data;
+        console.log("an init works--> " + data);
+        this.adminLogics=data['data'];
        
       }
     );
@@ -206,7 +207,7 @@ console.log("doctor added...!");
     
     
         // console.log("doctor added...!");
-        this.http.post('http://127.0.0.1:5000/leaveArray/', formData1).subscribe(
+        this.http.post('http://127.0.0.1:3000/leaveArray/', formData1).subscribe(
           (data: any) => {
             console.log(data);
  
@@ -219,40 +220,41 @@ console.log("doctor added...!");
       
   onUpdateLogic(){
     // this.doctorServices.onUpdateDoctor(this.indexDoctro,this.name,this.ward,this.assingDate,this.priority);
+    console.log();
     let updateData= {
       'type':this.type,
-      'name':this.name,
+      'algorithmNo':this.algorithmNo,
       'status':this.status
     };
-    this.http.patch('http://127.0.0.1:5000/adminLogic/', updateData, {}).subscribe(
+    this.http.post('http://127.0.0.1:3000/api/algorithm/update', updateData).subscribe(
       (data: any) => {
         this.getAdminLogic();
         console.log(data);
       }
     )
       }
-      setLogicModels(type:string,name:string,status:string){
+      setLogicModels(type:string,algorithmNo:string,status:string){
         let otherPart:string
         this.type=type;
-        this.name=name;
+        this.algorithmNo=algorithmNo;
         this.status=status;
-        if(name=='ARIMA Model'){
-          otherPart='RNN Model';
+        if(algorithmNo=='1'){
+          otherPart='2';
         }
-        if(name=='RNN Model'){
-          otherPart='ARIMA Model';
+        if(algorithmNo=='2'){
+          otherPart='1';
         }
-        if(name=='Genatic'){
-          otherPart='Iterative';
+        if(algorithmNo=='3'){
+          otherPart='4';
         }
-        if(name=='Iterative'){
-          otherPart='Genatic';
+        if(algorithmNo=='4'){
+          otherPart='3';
         }
         this.onUpdateLogic();
 
 
-        this.name=otherPart;
-        console.log("this.name--> "+this.name);
+        this.algorithmNo=otherPart;
+        console.log("this.name--> "+this.algorithmNo);
         if(status=="true"){
           this.status='false';
         }else{

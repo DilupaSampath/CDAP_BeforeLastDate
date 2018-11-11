@@ -31,7 +31,7 @@
         <div class="sidebar-fixed position-fixed">
 
             <a class="logo-wrapper waves-effect">
-                <img src="../../../../assets/img/logo.PNG" class="img-fluid" alt="">
+                <img src="../../../../assets/img/logo.png" class="img-fluid" alt="" style="    max-height: 82px;">
             </a>
 
             <div class="list-group list-group-flush">
@@ -63,32 +63,38 @@
       <div class="row">
         <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
           <div class="progress">
-              <div class="progress-bar  active" role="progressbar" aria-valuenow="  45"     aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                <span style="background-color: red;" class="skill-name"><strong>Ward 1</strong></span>
+              <div class="progress-bar  active" role="progressbar" aria-valuenow="  45"     aria-valuemin="0" aria-valuemax="100"  [ngStyle]="{'width': ward1pr+'%'}">
+                <span *ngIf="ward1pr<40" style="background-color: green;" class="skill-name"><strong>Ward 1</strong></span>
+                <span *ngIf="ward1pr>40 && ward1pr<70" style="background-color: orange;" class="skill-name"><strong>Ward 1</strong></span>
+                <span *ngIf="ward1pr>70" style="background-color: red;" class="skill-name"><strong>Ward 1</strong></span>
               </div>
           </div>
         </div>
-        <div style="top: -4px;font-weight: 600" class="col-md-2 col-sm-2 col-xs-2 text-left">90%</div>
+        <div style="top: -4px;font-weight: 600" class="col-md-2 col-sm-2 col-xs-2 text-left">{{ward1pr}}%</div>
       </div>
       <div class="row">
         <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
           <div class="progress">
-              <div class="progress-bar  active" role="progressbar" aria-valuenow="  45"     aria-valuemin="0" aria-valuemax="100" style="width: 70%">
-                <span style="background-color: green;" class="skill-name"><strong>Ward 2</strong></span>
+              <div class="progress-bar  active" role="progressbar" aria-valuenow="  45"     aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width': ward2pr+'%'}">
+                <span  *ngIf="ward2pr<40" style="background-color: green;" class="skill-name"><strong>Ward 2</strong></span>
+                <span *ngIf="ward2pr>40 && ward1pr<70" style="background-color: orange;" class="skill-name"><strong>Ward 2</strong></span>
+                <span *ngIf="ward2pr>70" style="background-color: red;" class="skill-name"><strong>Ward 2</strong></span>
               </div>
           </div>
         </div>
-        <div style="top: -4px;font-weight: 600" class="col-md-2 col-sm-2 col-xs-2 text-left">40%</div>
+        <div style="top: -4px;font-weight: 600" class="col-md-2 col-sm-2 col-xs-2 text-left">{{ward2pr}}%</div>
       </div>
       <div class="row">
         <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
           <div class="progress">
-              <div class="progress-bar  active" role="progressbar" aria-valuenow="  45"     aria-valuemin="0" aria-valuemax="100" style="width: 90%">
-                <span  style="background-color: orange;" class="skill-name"><strong>Ward 3</strong></span>
+              <div class="progress-bar  active" role="progressbar" aria-valuenow="  45"     aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width': ward3pr+'%'}">
+                <span  *ngIf="ward3pr<40" style="background-color: green;" class="skill-name"><strong>Ward 3</strong></span>
+                <span *ngIf="ward3pr>40 && ward1pr<70" style="background-color: orange;" class="skill-name"><strong>Ward 3</strong></span>
+                <span *ngIf="ward3pr>70" style="background-color: red;" class="skill-name"><strong>Ward 3</strong></span>
               </div>
           </div>
         </div>
-        <div style="top: -4px;font-weight: 600" class="col-md-2 col-sm-2 col-xs-2 text-left">55%</div>
+        <div style="top: -4px;font-weight: 600" class="col-md-2 col-sm-2 col-xs-2 text-left">{{ward3pr}}%</div>
       </div>
 
 

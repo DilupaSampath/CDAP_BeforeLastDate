@@ -60,8 +60,9 @@
     <thead class="mdb-color darken-3">
         <tr class="text-white">
             <th>Logic Type</th>
-            <th>Name</th>
+            <th>Algorithm No</th>
             <th>Action</th>
+            <th>Status</th>
             <th></th>
             <!-- <th>Username</th> -->
         </tr>
@@ -72,10 +73,10 @@
     <tbody>
         <tr *ngFor="let adminLogic of  adminLogics">
             <th scope="row">{{ adminLogic.type }}</th>
-            <td>{{ adminLogic.name }}</td>
+            <td>{{ adminLogic.algorithmNo }}</td>
             <td>
-                <span (click)="setLogicModels( adminLogic.type, adminLogic.name, 'true')"  style="background-color: darkcyan" class="badge  badge-pill ">Apply</span>
-                <span (click)="setLogicModels( adminLogic.type, adminLogic.name, 'false')" style="background-color: grey" class="badge  badge-pill ">Stop</span>
+                <span (click)="setLogicModels( adminLogic.type, adminLogic.algorithmNo, 'true')"  style="background-color: darkcyan" class="badge  badge-pill ">Apply</span>
+                <span (click)="setLogicModels( adminLogic.type, adminLogic.algorithmNo, 'false')" style="background-color: grey" class="badge  badge-pill ">Stop</span>
             </td>
             <td>
                     <label   *ngIf="adminLogic.status=='true'" class="badge badge-success animated flash infinite">

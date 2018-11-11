@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-research-area',
@@ -12,6 +13,11 @@ yearArray:any[];
 monthArray:any[];
 districtArray:any[];
 yearArrayNext:any[];
+cmpResult:any[];
+month1P:any;
+month2P:any;
+yearP:any;
+districtP:any
 
   public map: any = { lat: 51.678418, lng: 7.809007 };
   public chart1Type:string = 'bar'; 
@@ -75,7 +81,7 @@ yearArrayNext:any[];
     }
   };
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.yearArrayNext=[
       "2018",
       "2019",
@@ -263,5 +269,21 @@ yearArrayNext:any[];
       window.location.hash='';
 
   }
+  compair(){
+    console.log(this.month1P);
+    console.log(this.month2P);
+    console.log(this.districtP);
+    console.log(this.yearP);
 
+
+    this.http.post('http://127.0.0.1:3000/api/algorithm/compairPastData',{
+      "district" :this.districtP,
+      "month1":this.month1P,
+      "month2":this.month1P
+    }).subscribe((data: any) => {
+      console.log(data.data);
+      console.log("data.data oooooooooooooooooooo");
+      this.cmpResult = data.data;
+    });  
+  }
 }

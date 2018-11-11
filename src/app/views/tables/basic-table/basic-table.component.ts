@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ServiceDoctor } from 'app/services.Doctor';
 import { HttpClient } from '@angular/common/http';
 declare let jsPDF;
 interface Nurses {
@@ -35,7 +34,7 @@ export class BasicTableComponent implements OnInit {
   tabColor2:string;
   color1:string;
   color2:string;
-  constructor(private nursesServices: ServiceDoctor,private http: HttpClient) {
+  constructor(private http: HttpClient) {
     
     this.title="New Nurse";
     this.buttonTitle="Assign Nurse";
@@ -55,10 +54,10 @@ export class BasicTableComponent implements OnInit {
   }
 
   getNurses() {
-    this.http.get('http://127.0.0.1:4000/nursesModel/nurses').subscribe(
+    this.http.get('http://127.0.0.1:3000/api/nurse/getAll').subscribe(
       (data: any[]) => {
-        console.log("an init works--> " + JSON.stringify(data));
-        this.nurses = data;
+        console.log(data);
+        this.nurses = data['data'];
        
       }
     );
@@ -72,12 +71,11 @@ export class BasicTableComponent implements OnInit {
       "name":this.name,
       "NIC":this.NIC,
       "ward": this.ward,
-      "assingDate": this.assingDate,
       "priority": this.priority
     };
 
     // console.log("doctor added...!");
-    this.http.post('http://127.0.0.1:4000/nursesModel/nurses', formData).subscribe(
+    this.http.post('http://127.0.0.1:3000/api/nurse/new', formData).subscribe(
       (data: any) => {
         console.log(data);
         this.getNurses();
@@ -97,6 +95,18 @@ export class BasicTableComponent implements OnInit {
 //    console.log("Nurse added...!");
 //  }
  onUpdate(){
+  let formData = {
+    "name":this.name,
+    "NIC":this.NIC,
+    "ward": this.ward,
+    "priority": this.priority
+  };
+
+  this.http.post('http://127.0.0.1:3000/api/nurse/update',formData ).subscribe(
+    (data: any) => {
+      console.log(data);
+      this.getNurses();
+    });
 
   // this.nursesServices.onUpdateNurse(this.indexDoctro,this.name,this.ward,this.assingDate,this.priority);
  }
@@ -116,11 +126,18 @@ export class BasicTableComponent implements OnInit {
 
  }
  onRemove(){
-   this.nursesServices.removeNurse(this.removeIndex);
+  //  this.nursesServices.removeNurse(this.removeIndex);
+  console.log(this.NIC);
+  this.http.post('http://127.0.0.1:3000/api/nurse/remove',{"nurse_id":this.NIC} ).subscribe(
+    (data: any) => {
+      console.log(data);
+      this.getNurses();
+    });
+    this.NIC="";
 
  }
- onRemoveIndex(index:number){
-   this.removeIndex=index;
+ onRemoveIndex(index:any){
+   this.NIC=index;
  }
  launch_toast() {
    var x = document.getElementById("toast")

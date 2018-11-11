@@ -147,14 +147,14 @@
         <p class="h4 text-center mb-4">Compare District Patient Counts</p>
 
         <!-- Default input name -->
-        <select class="mdb-select dropdown-primary form-control">
+        <select  [(ngModel)]="districtP"  class="mdb-select dropdown-primary form-control" [ngModelOptions]="{standalone: true}">
           <option>Select District</option>
-          <option *ngFor="let district of districtArray">{{district}}</option>
+          <option  *ngFor="let district of districtArray">{{district}}</option>
         </select>
         <br>
-        <select class="mdb-select dropdown-primary form-control">
+        <select  [(ngModel)]="yearP"  class="mdb-select dropdown-primary form-control" [ngModelOptions]="{standalone: true}">
           <option>Select Year</option>
-          <option *ngFor="let year of yearArray">{{year}}</option>
+          <option [disabled]="year != '2017'" *ngFor="let year of yearArray">{{year}}</option>
 
 
         </select>
@@ -162,7 +162,7 @@
         <br>
 
         <!-- Default input email -->
-        <select class="mdb-select dropdown-primary form-control">
+        <select  [(ngModel)]="month1P"  class="mdb-select dropdown-primary form-control" [ngModelOptions]="{standalone: true}">
           <option>Select Month1</option>
           <option *ngFor="let month of monthArray">{{month}}</option>
         </select>
@@ -170,7 +170,7 @@
         <br>
 
         <!-- Default input email -->
-        <select class="mdb-select dropdown-primary form-control">
+        <select  [(ngModel)]="month2P"  class="mdb-select dropdown-primary form-control" [ngModelOptions]="{standalone: true}">
           <option>Select Month2</option>
           <option *ngFor="let month of monthArray">{{month}}</option>
         </select>
@@ -182,7 +182,7 @@
             <input type="password" id="defaultFormRegisterPasswordEx" class="form-control"> -->
 
         <div class="text-center mt-4">
-          <button class="btn btn-unique" type="submit">Compair</button>
+          <button class="btn btn-unique" type="submit" (click)="compair()">Compair</button>
         </div>
 
 
@@ -279,8 +279,8 @@
           <tbody>
             <tr>
               <th scope="row">Patient Count</th>
-              <td>100</td>
-              <td>120</td>
+              <td>{{cmpResult.month1.count}}</td>
+              <td>{{cmpResult.month2.count}}</td>
               <td>
                 <span class="badge badge-warning">Close Matched</span>
               </td>
@@ -320,8 +320,8 @@
             </tr>
             <tr>
               <th scope="row">Compaired to Gampaha</th>
-              <td>-100</td>
-              <td>-80</td>
+              <td>{{cmpResult.month1.count - cmpResult.month1.colombo}}</td>
+              <td>{{cmpResult.month2.count - cmpResult.month2.colombo}}</td>
               <td>
                 <img style="width: 43px;height: 43px;" src="http://icons.iconarchive.com/icons/graphicloads/medical-health/128/patient-2-icon.png"
                   alt="">

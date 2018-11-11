@@ -43,7 +43,7 @@
                 </button>
             </div>
 
-            <a href="" class="white-text mx-3">Currnt Nurses</a>
+            <a href="" class="white-text mx-3">Current Nurses</a>
 
             <div class="round">
                 <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2" data-toggle="modal" data-target="#fullHeightModalRight"
@@ -62,7 +62,7 @@
                         <th class="text-center">Nurses Name</th>
                         <th class="text-center">NIC</th>
                         <th class="text-center">Ward</th>
-                        <th class="text-center">Assinged Date</th>
+                        <!-- <th class="text-center">Assinged Date</th> -->
                         <th class="text-center">Priority</th>
                         <th class="text-center">Action</th>
                     </tr>
@@ -70,7 +70,7 @@
                         <td class="pt-3-half">{{nurse.name}}</td>
                         <td class="pt-3-half">{{nurse.NIC}}</td>
                         <td class="pt-3-half">{{nurse.ward}}</td>
-                        <td class="pt-3-half">{{nurse.assingDate | date:'dd-DD-yyyy'}}</td>
+                        <!-- <td class="pt-3-half">{{nurse.assingDate | date:'dd-DD-yyyy'}}</td> -->
                         <td class="pt-3-half">{{nurse.priority}}</td>
 
                         <td class="round">
@@ -78,7 +78,7 @@
                                 (click)="fluidRight.show()">
                                 <i class="fa fa-pencil mt-0" style="color: brown"></i>
                             </button>
-                            <button (click)="onRemoveIndex(i)" type="button" class="btn btn-danger btn-outline-white btn-rounded btn-sm px-2" data-toggle="modal"
+                            <button (click)="onRemoveIndex(nurse.NIC)" type="button" class="btn btn-danger btn-outline-white btn-rounded btn-sm px-2" data-toggle="modal"
                                 data-target="#modalConfirmDelete" (click)="fluidRight1.show()">
                                 <i class="fa fa-remove mt-0" style="color: red"></i>
                             </button>
@@ -271,7 +271,30 @@
                             <input [(ngModel)]="NIC" type="text" id="NIC" class="form-control" mdbInputDirective [ngModelOptions]="{standalone: true}">
                             <label for="NIC">NIC</label>
                         </div>
+                        <div class="md-form wardMargin">
+                            <i class="fa fa-ambulance prefix " style="font-size:28px"></i>
+                            <!--        <input [(ngModel)]="ward" type="text" id="Ward" class="form-control" mdbInputDirective [ngModelOptions]="{standalone: true}">
+                            <label for="Ward">Ward</label> -->
+                            <select id="Ward" [(ngModel)]="ward" name="Select Ward" value="Select Ward"  class="form-control Ward" style="    width: 89%;margin-left: 11%;">
+                                <option selected disabled>Select Ward</option>
+                                <option value="Ward 1">Ward 1</option>
+                                <option value="Ward 2">Ward 2</option>
+                                <option value="Ward 3">Ward 3</option>
+                              </select>
+                        </div>
 
+               
+                        <div class="md-form">
+                            <i  class="fa fa-line-chart prefix grey-text" style="font-size:28px"></i>
+                         <select id="priority" [(ngModel)]="priority" name="Select Priority" value="Select Priority"  class="form-control">
+                            <option selected disabled>Select priority</option>
+                            <option value="Low">Low</option>  
+                            <option value="Medium">Medium </option>
+                            <option value="High">High</option>
+                          </select>
+                            <!-- <label for="doctorType">Doctro Type</label> -->
+                        </div> 
+<!-- 
                         <div class="md-form">
                             <i class="fa fa-ambulance prefix " style="font-size:28px"></i>
                             <input [(ngModel)]="ward" type="text" id="Ward" class="form-control" mdbInputDirective [ngModelOptions]="{standalone: true}">
@@ -279,18 +302,13 @@
                         </div>
                         <div class="md-form">
                             <i class="fa fa-ambulance prefix " style="font-size:28px"></i>
-                            <!-- <input [(ngModel)]="assingDate" type="text" id="Assing" class="form-control" mdbInputDirective [ngModelOptions]="{standalone: true}"> -->
-                            <input type="date"  [(ngModel)]="assingDate" id="Assing" class="form-control" mdbInputDirective [ngModelOptions]="{standalone: true}" value="{{assingDate}}">
-
-                            
                         </div>
-                        <mdb-date-picker #datePicker name="mydate" [options]="myDatePickerOptions" [placeholder]="'Selected date'" [(ngModel)]="assingDate"required></mdb-date-picker>
 
-                        <div class="md-form">
+                        <div class="md-form">   
                             <i class="fa fa-line-chart prefix " style="font-size:28px"></i>
                             <input [(ngModel)]="priority" type="text" id="Priority" class="form-control" mdbInputDirective [ngModelOptions]="{standalone: true}">
                             <label for="Priority">Priority</label>
-                        </div>
+                        </div> -->
 
                         <!-- <div class="md-form">
                                   <i class="fa fa-pencil prefix grey-text"></i>

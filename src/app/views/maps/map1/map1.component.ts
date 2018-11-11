@@ -121,11 +121,11 @@ return tempWard+"-"+priyority+"-"+actualWard;
 }
 
   getPatients() {
-    this.http.get('http://127.0.0.1:5000/patients/')
+    this.http.get('http://127.0.0.1:3000/api/patient/getAll')
       .subscribe(
         (data: any[]) => {
           console.log("an init works--> " + JSON.stringify(data));
-          this.patients = data;
+          this.patients = data['data'];
          
         }
       );
@@ -152,7 +152,7 @@ return tempWard+"-"+priyority+"-"+actualWard;
     };
 
 
-    this.http.post('http://127.0.0.1:5000/patients/', formData).subscribe(
+    this.http.post('http://127.0.0.1:3000/api/patient/new', formData).subscribe(
       (data: any) => {
         console.log(data);
         this.getPatients();
@@ -178,7 +178,7 @@ return tempWard+"-"+priyority+"-"+actualWard;
     };
     console.log("this.id");
     console.log(this.id);
-    this.http.patch('http://127.0.0.1:5000/patients/', updateData, {}).subscribe(
+    this.http.post('http://127.0.0.1:3000/api/patient/update', updateData).subscribe(
       (data: any) => {
         this.getPatients();
         console.log(data);
@@ -219,7 +219,7 @@ return tempWard+"-"+priyority+"-"+actualWard;
       }
       onRemove(){
         // this.patientrServices.removePatient(this.removeIndex);
-        this.http.request('DELETE','http://127.0.0.1:5000/patients/' , { 'body':{'id':this.removeId}}).subscribe(
+        this.http.post('http://127.0.0.1:3000/api/patient/remove' , {'patient_id':this.removeId}).subscribe(
           (data: any[]) => {
             console.log(data);
             this.getPatients();

@@ -1,74 +1,100 @@
 <!-- <img src="./assets/gif/Wd_doctor.gif" alt="" > <br> -->
-<div class="row" style="position: relative;z-index: 100;cursor: pointer;">
-        <nav class="breadcrumb">
-                <span class="breadcrumb-item">Doctors</span>
-            </nav>
-            <nav routerLink="/profiles/researchArea" routerLinkActive="active"  class="breadcrumb" style="background-color: #007bff94;">
+<div class="row" style="position: relative;cursor: pointer;">
+    <nav class="breadcrumb">
+        <span class="breadcrumb-item">Doctors</span>
+    </nav>
+    <nav routerLink="/profiles/researchArea" routerLinkActive="active" class="breadcrumb" style="background-color: #007bff94;">
 
-                    <span routerLink="/profiles/researchArea" routerLinkActive="active" class="breadcrumb-item">Research Area</span>
-    
-            </nav>
+        <span routerLink="/profiles/researchArea" routerLinkActive="active" class="breadcrumb-item">Research Area</span>
+
+    </nav>
 </div>
 <router-outlet></router-outlet>
 <div class="row" style="margin-top: -49px;">
-<img src="./assets/gif/Doctor_Working.gif" alt="" style="height: 267px;margin-top: -21px;    position: relative;z-index: 100;">
-<div class="card mb-3 offset-md-4" style="height: 297px;max-width: 19rem;margin-top: -14px;left: 40px;">
-    <div class="card-header text-center">Next Week</div>
-<div class="card-body">
+    <img src="./assets/gif/Doctor_Working.gif" alt="" style="height: 267px;margin-top: -21px;    position: relative">
+    <div class="card mb-3 offset-md-4" style="height: 297px;max-width: 19rem;margin-top: -14px;left: 40px;">
+        <div class="card-header text-center">Next Week</div>
+        <div class="card-body">
 
-    <div class="btn-group-horizontal" style="padding-left: 23px;" data-toggle="buttons">
-        <label [ngStyle]="{'background-color': buttonColor1}" class="badge  ">
-            <input (click)="radio1Click()" type="radio" name="options" id="option1" autocomplete="off" checked> Ward1
-        </label>
-        <label [ngStyle]="{'background-color': buttonColor2}" class="badge  ">
-            <input (click)="radio2Click()" type="radio" name="options" id="option2" autocomplete="off"> Ward2
-        </label>
-        <label [ngStyle]="{'background-color': buttonColor3}" class="badge  ">
-            <input (click)="radio3Click()" type="radio" name="options" id="option3" autocomplete="off"> Ward3
-        </label>
+            <div class="btn-group-horizontal" style="padding-left: 23px;" data-toggle="buttons">
+                <label [ngStyle]="{'background-color': buttonColor1}" class="badge  ">
+                    <input (click)="radio1Click()" type="radio" name="options" id="option1" autocomplete="off" checked> Ward1
+                </label>
+                <label [ngStyle]="{'background-color': buttonColor2}" class="badge  ">
+                    <input (click)="radio2Click()" type="radio" name="options" id="option2" autocomplete="off"> Ward2
+                </label>
+                <label [ngStyle]="{'background-color': buttonColor3}" class="badge  ">
+                    <input (click)="radio3Click()" type="radio" name="options" id="option3" autocomplete="off"> Ward3
+                </label>
+            </div>
+            <div class="btn-group-horizontal horizontalHedule" role="group" aria-label="horizontal button group">
+                <button style="background-color: #333" type="button" class="btn btn-git" data-toggle="modal" data-target="#modalShedule"
+                    mdbWavesEffect>
+                    <i *ngIf="buttonColor1=='#3a7973'" style=" margin-left: -24px;" class="fa fa-stethoscope" aria-hidden="true"> &nbsp; Consultant : Dr.Kamal</i>
+                    <i *ngIf="buttonColor2=='#3a7973'" style=" margin-left: -24px;" class="fa fa-stethoscope" aria-hidden="true"> &nbsp; Consultant : Dr.Asela </i>
+                    <i *ngIf="buttonColor3=='#3a7973'" style=" margin-left: -24px;" class="fa fa-stethoscope" aria-hidden="true"> &nbsp; Consultant : Dr.Sahan</i>
+                </button>
+                <button style="background-color: #333;width: 213px;" type="button" class="btn btn-git" data-target="#modalShedule" mdbWavesEffect>
+                    <i style="    margin-left: -60px;" class="fa fa-group" aria-hidden="true"></i>
+                    Patients&nbsp;&nbsp;&nbsp;
+                    <span *ngIf="(buttonColor1=='#3a7973') &&( ward1 >70 )" class="badge badge-danger badge-pill pull-right">&nbsp;&nbsp;&nbsp;{{ward1}}
+                        <i class="fa fa-arrow-up ml-1"></i>
+                    </span>
+                    <span *ngIf="(buttonColor1=='#3a7973') && (ward1 > 20 && ward1 > 70 )" class="badge badge-warning badge-pill pull-right">&nbsp;&nbsp;&nbsp;{{ward1}}
+                        <i class="fa fa-arrow-up ml-1"></i>
+                    </span>
+                    <span *ngIf="(buttonColor1=='#3a7973') && (ward1 < 20)" class="badge badge-success badge-pill pull-right">&nbsp;&nbsp;&nbsp;{{ward1}}
+                        <i class="fa fa-arrow-up ml-1"></i>
+                    </span>
+
+
+                    <span *ngIf="(buttonColor2=='#3a7973') &&( ward2 >70)" class="badge badge-danger badge-pill pull-right">&nbsp;&nbsp;&nbsp;{{ward2}}
+                        <i class="fa fa-arrow-up ml-1"></i>
+                    </span>
+                    <span *ngIf="(buttonColor2=='#3a7973') &&  (ward2 > 20 && ward2 > 70) " class="badge badge-warning badge-pill pull-right">&nbsp;&nbsp;&nbsp;{{ward2}}
+                        <i class="fa fa-arrow-up ml-1"></i>
+                    </span>
+                    <span *ngIf="(buttonColor2=='#3a7973') &&  (ward1 < 20) " class="badge badge-success badge-pill pull-right">&nbsp;&nbsp;&nbsp;{{ward2}}
+                        <i class="fa fa-arrow-up ml-1"></i>
+                    </span>
+
+
+
+
+
+                    <span *ngIf="(buttonColor3=='#3a7973') && (ward3 >70) " class="badge badge-danger badge-pill pull-right">&nbsp;&nbsp;&nbsp;{{ward3}}
+                        <i class="fa fa-arrow-up ml-1"></i>
+                    </span>
+                    
+                    <span *ngIf="(buttonColor3=='#3a7973') && (ward3 > 20 && ward2 > 70 )" class="badge badge-warning badge-pill pull-right">&nbsp;&nbsp;&nbsp;{{ward3}}
+                        <i class="fa fa-arrow-up ml-1"></i>
+                    </span>
+                    
+                    <span *ngIf="(buttonColor3=='#3a7973') &&  (ward3 < 20)" class="badge badge-success badge-pill pull-right">&nbsp;&nbsp;&nbsp;{{ward3}}
+                        <i class="fa fa-arrow-up ml-1"></i>
+                    </span>
+
+                </button>
+                <button style="background-color: #333;width: 213px;" type="button" class="btn btn-git" data-target="#modalShedule" mdbWavesEffect>
+                    <i style="    margin-left: -40px;" class="fa fa-hospital-o" aria-hidden="true"></i>
+
+                    Free Beds&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span *ngIf="buttonColor1=='#3a7973'" class="badge badge-danger badge-pill pull-right">&nbsp;&nbsp;&nbsp;10%
+                        <i class="fa fa-arrow-down ml-1"></i>
+                    </span>
+                    <span *ngIf="buttonColor2=='#3a7973'" class="badge badge-warning badge-pill pull-right">&nbsp;&nbsp;&nbsp;30%
+                        <i class="fa fa-arrow-down ml-1"></i>
+                    </span>
+                    <span *ngIf="buttonColor3=='#3a7973'" class="badge badge-success badge-pill pull-right">&nbsp;&nbsp;&nbsp;60%
+                        <i class="fa fa-arrow-down ml-1"></i>
+                    </span>
+
+                </button>
+
+
+            </div>
+        </div>
     </div>
-    <div class="btn-group-horizontal horizontalHedule" role="group" aria-label="horizontal button group">
-        <button style="background-color: #333" type="button" class="btn btn-git" data-toggle="modal" data-target="#modalShedule"
-            mdbWavesEffect>
-            <i *ngIf="buttonColor1=='#3a7973'" style=" margin-left: -24px;" class="fa fa-stethoscope" aria-hidden="true"> &nbsp; Consultant  :  Dr.Kamal</i> 
-            <i *ngIf="buttonColor2=='#3a7973'" style=" margin-left: -24px;" class="fa fa-stethoscope" aria-hidden="true"> &nbsp; Consultant  :  Dr.Asela </i> 
-            <i *ngIf="buttonColor3=='#3a7973'" style=" margin-left: -24px;" class="fa fa-stethoscope" aria-hidden="true"> &nbsp; Consultant  :  Dr.Sahan</i></button>
-        <button style="background-color: #333;width: 213px;" type="button" class="btn btn-git" data-target="#modalShedule"
-            mdbWavesEffect>
-            <i style="    margin-left: -60px;" class="fa fa-group" aria-hidden="true"></i>
-           Patients&nbsp;&nbsp;&nbsp;
-                <span *ngIf="buttonColor1=='#3a7973'" class="badge badge-danger badge-pill pull-right">&nbsp;&nbsp;&nbsp;70
-                  <i  class="fa fa-arrow-up ml-1"></i>
-                </span>
-                <span *ngIf="buttonColor2=='#3a7973'" class="badge badge-warning badge-pill pull-right">&nbsp;&nbsp;&nbsp;40
-                        <i  class="fa fa-arrow-up ml-1"></i>
-                      </span>
-                      <span *ngIf="buttonColor3=='#3a7973'" class="badge badge-success badge-pill pull-right">&nbsp;&nbsp;&nbsp;20
-                            <i  class="fa fa-arrow-up ml-1"></i>
-                          </span>
-           
-            </button>
-            <button style="background-color: #333;width: 213px;" type="button" class="btn btn-git" data-target="#modalShedule"
-            mdbWavesEffect>
-            <i style="    margin-left: -40px;" class="fa fa-hospital-o" aria-hidden="true"></i>
-            
-           Free Beds&nbsp;&nbsp;&nbsp;&nbsp;
-                <span *ngIf="buttonColor1=='#3a7973'" class="badge badge-danger badge-pill pull-right">&nbsp;&nbsp;&nbsp;10%
-                  <i  class="fa fa-arrow-down ml-1"></i>
-                </span>
-                <span *ngIf="buttonColor2=='#3a7973'" class="badge badge-warning badge-pill pull-right">&nbsp;&nbsp;&nbsp;30%
-                        <i  class="fa fa-arrow-down ml-1"></i>
-                      </span>
-                      <span *ngIf="buttonColor3=='#3a7973'" class="badge badge-success badge-pill pull-right">&nbsp;&nbsp;&nbsp;60%
-                            <i  class="fa fa-arrow-down ml-1"></i>
-                          </span>
-           
-            </button>
-
-
-    </div>
-</div>
-</div>
 </div>
 <Section>
     <div class="card">
@@ -83,7 +109,7 @@
                 </button>
             </div>
 
-            <a href="" class="white-text mx-3">Currnt Doctors</a>
+            <a href="" class="white-text mx-3">Current  Doctors</a>
 
             <div class="round">
                 <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2" data-toggle="modal" data-target="#basicExample"
@@ -126,7 +152,7 @@
                                 data-target="#basicExample" (click)="fluidRight.show()">
                                 <i class="fa fa-pencil mt-0" style="color: brown"></i>
                             </button>
-                            <button (click)="onRemoveIndex(doctor._id)" type="button" class="btn btn-danger btn-outline-white btn-rounded btn-sm px-2"
+                            <button (click)="onRemoveIndex(doctor.id)" type="button" class="btn btn-danger btn-outline-white btn-rounded btn-sm px-2"
                                 data-toggle="modal" data-target="#modalConfirmDelete" (click)="fluidRight1.show()">
                                 <i class="fa fa-remove mt-0" style="color: red"></i>
                             </button>
@@ -207,7 +233,7 @@
                 </button>
             </div>
 
-            <a href="" class="white-text mx-3">Currnt Doctors</a>
+            <a href="" class="white-text mx-3">Current  Doctors</a>
 
             <div class="round">
                 <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
@@ -285,9 +311,9 @@
     <div class="modal-dialog modal-full-height modal-right " role="document">
         <div class="modal-content">
             <div class="modal-header" style="background-color: #0986e2; color: white;border: none;">
-                
+
                 <h4 class="modal-title w-100" style="font-weight: 991;text-align: center" id="myModalLabel">
-                        <i class="fa fa-user-md" aria-hidden="true"></i>&nbsp;&nbsp;{{title}} &nbsp;&nbsp;
+                    <i class="fa fa-user-md" aria-hidden="true"></i>&nbsp;&nbsp;{{title}} &nbsp;&nbsp;
                     <strong>{{DoctorID}}</strong>
                 </h4>
                 <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="fluidRight.hide()">
@@ -309,25 +335,31 @@
                             <label for="NIC">NIC</label>
                         </div>
 
-                        <div class="md-form">
+                        <div class="md-form wardMargin">
                             <i class="fa fa-ambulance prefix " style="font-size:28px"></i>
-                            <input [(ngModel)]="ward" type="text" id="Ward" class="form-control" mdbInputDirective [ngModelOptions]="{standalone: true}">
-                            <label for="Ward">Ward</label>
-                        </div>
-                        <div class="md-form">
-                            <i class="fa fa-ambulance prefix " style="font-size:28px"></i>
-                            <!-- <input [(ngModel)]="assingDate" type="text" id="Assing" class="form-control" mdbInputDirective [ngModelOptions]="{standalone: true}"> -->
-                            <input type="date" [(ngModel)]="assingDate" id="Assing" class="form-control" mdbInputDirective [ngModelOptions]="{standalone: true}">
-                            <!-- <label for="Assing">Assing Date</label> -->
+                            <!--        <input [(ngModel)]="ward" type="text" id="Ward" class="form-control" mdbInputDirective [ngModelOptions]="{standalone: true}">
+                            <label for="Ward">Ward</label> -->
+                            <select id="Ward" [(ngModel)]="ward" name="Select Ward" value="Select Ward" class="form-control Ward" style="    width: 89%;margin-left: 11%;">
+                                <option selected disabled>Select Ward</option>
+                                <option value="Ward 1">Ward 1</option>
+                                <option value="Ward 2">Ward 2</option>
+                                <option value="Ward 3">Ward 3</option>
+                            </select>
                         </div>
 
-                        <!-- <div class="md-form">
+
+                        <div class="md-form">
                             <i class="fa fa-line-chart prefix grey-text" style="font-size:28px"></i>
-                            <input [(ngModel)]="priority" type="text" id="Priority" class="form-control" mdbInputDirective [ngModelOptions]="{standalone: true}">
-                            <label for="Priority">Priority</label>
-                        </div> --> 
-                                      
-                        <div class="row dropdown md-form" dropdown [dropup]="true">
+                            <select id="doctorType" [(ngModel)]="doctorType" name="Select Doctro Type" value="Select Doctro Type" class="form-control">
+                                <option selected disabled>Select Doctro Type</option>
+                                <option value="Nomal">Normal</option>
+                                <option value="Consultant">Consultant</option>
+                            </select>
+                            <!-- <label for="doctorType">Doctro Type</label> -->
+                        </div>
+
+
+                        <!-- <div class="row dropdown md-form" dropdown [dropup]="true">
                                 <i class="fa fa-line-chart prefix  col" style="font-size:28px"></i>
                             <span  style="height: 32px;width: 209px;margin-left: 96px;background-color: #626469e6 "  (click)="dropDownn()" class="badge dropdown-toggle"  id="dropdownMenuButton" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
@@ -337,7 +369,7 @@
                                 <a class="dropdown-item" (click)="setDoctorTypeNgModel('Normal')" >Nomal</a>
                                 <a class="dropdown-item" (click)="setDoctorTypeNgModel('Consultant')">Consultant</a>
                             </div>
-                        </div>
+                        </div> -->
 
                         <!-- <div class="md-form">
               <i class="fa fa-pencil prefix grey-text"></i>
@@ -406,6 +438,12 @@
         <i class="fa fa-check" aria-hidden="true"></i>
     </div>
     <div id="desc">Success Fully Assinged...!</div>
+</div>
+<div id="toast3">
+    <div id="img">
+        <i class="fa fa-check" aria-hidden="true"></i>
+    </div>
+    <div id="desc">Success Fully Updated...!</div>
 </div>
 
 <!-- http://jsfiddle.net/m8x1g0q8/ -->

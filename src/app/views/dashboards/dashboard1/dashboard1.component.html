@@ -73,17 +73,20 @@
   <!-- List group links -->
   <div class="list-group list-group-flush">
     <a class="list-group-item list-group-item-action waves-effect">Patients
-      <span class="badge badge-danger badge-pill pull-right">22%
+      <span *ngIf="nextweekPatientStatus" class="badge badge-danger badge-pill pull-right">{{nextWeekPatients}}
         <i class="fa fa-arrow-up ml-1"></i>
+      </span>
+      <span *ngIf="!nextweekPatientStatus" class="badge badge-success badge-pill pull-right">{{nextWeekPatients}}
+        <i class="fa fa-arrow-down ml-1"></i>
       </span>
     </a>
     <a class="list-group-item list-group-item-action waves-effect">Avalability
-      <span class="badge badge-success badge-pill pull-right">5%
+      <span class="badge badge-success badge-pill pull-right">{{nextWeekAvalabilityCount}}%
         <i class="fa fa-arrow-down ml-1"></i>
       </span>
     </a>
     <a class="list-group-item list-group-item-action waves-effect">Free Nurses
-      <span class="badge badge-primary badge-pill pull-right">14</span>
+      <span class="badge badge-primary badge-pill pull-right">{{ NextWeekFreeNursesCount }}</span>
     </a>
     <a class="list-group-item list-group-item-action waves-effect">Free beds
       <span class="badge badge-primary badge-pill pull-right">54</span>
@@ -121,7 +124,7 @@
         <!-- Table  -->
         <table class="table table-hover">
           <!-- Table head -->
-          <thead class="blue-grey lighten-4">
+          <thead class="theadClass">
             <tr>
               <th>District</th>
               <th>Current</th>
@@ -133,24 +136,15 @@
 
           <!-- Table body -->
           <tbody>
-            <tr>
-              <th scope="row">Colombo</th>
-              <td>200</td>
-              <td>27</td>
-              <td >Medium</td>
+            <tr *ngFor="let item of districtTableData">
+              <th scope="row">{{item._id}}</th>
+              <td>{{item.value.current}}</td>
+              <td>{{item.value.nextweek}}</td>
+              <td *ngIf=" item.value.nextweek > 10 " > <span class="badge badge-danger badge-pill">High</span></td>
+              <td *ngIf=" item.value.nextweek < 2 " > <span class="badge badge-success badge-pill">Low</span></td>
+              <td *ngIf=" item.value.nextweek > 2  && item.value.nextweek < 10 "> <span class="badge badge-warning badge-pill">Medium</span></td>
             </tr>
-            <tr>
-              <th scope="row">Gampaha</th>
-              <td>160</td>
-              <td>20</td>
-              <td>Medium</td>
-            </tr>
-            <tr>
-              <th scope="row">Kaluthara</th>
-              <td>100</td>
-              <td>70</td>
-              <td>High</td>
-            </tr>
+            
           </tbody>
           <!-- Table body -->
         </table>
@@ -176,7 +170,7 @@
         <!-- Table  -->
         <table class="table table-hover">
           <!-- Table head -->
-          <thead class="blue lighten-4">
+          <thead class="theadClass">
             <tr>
               <th>Ward</th>
               <th>Current</th>
@@ -188,24 +182,15 @@
 
           <!-- Table body -->
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>300</td>
-              <td>50</td>
-              <td>High</td>
+            <tr *ngFor="let item of wardWisePrediction">
+              <th scope="row">{{ item.ward }}</th>
+              <td>{{ item.value.current }}</td>
+              <td>{{ item.value.nextweek}}</td>
+              <td *ngIf=" item.value.nextweek > 10 " > <span class="badge badge-danger badge-pill">High</span></td>
+              <td *ngIf=" item.value.nextweek < 2 " > <span class="badge badge-success badge-pill">Low</span></td>
+              <td *ngIf=" item.value.nextweek > 2  && item.value.nextweek < 10 "> <span class="badge badge-warning badge-pill">Medium</span></td>
             </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>200</td>
-              <td>30</td>
-              <td>Medium</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>230</td>
-              <td>10</td>
-              <td>Low</td>
-            </tr>
+            
           </tbody>
           <!-- Table body -->
         </table>

@@ -37,6 +37,10 @@ buttonColor1:string;
 buttonColor2:string;
 buttonColor3:string;
 mongoId:string;
+wardWisePrediction:any[];
+ward1:any;
+ward2:any;
+ward3:any;
 
   constructor(private http: HttpClient) {
     // this.doctors= doctorServices.doctors;
@@ -51,6 +55,7 @@ mongoId:string;
    }
 
   ngOnInit() {    
+    this.getPatientCountsForEachWard();
     this.genarateID('DR','942902069V');
     this.getDoctors();
     this.buttonColor1='#3a7973';
@@ -58,10 +63,10 @@ mongoId:string;
     // this.doctors= this.doctorServices.doctors;
   }
   getDoctors() {
-    this.http.get('http://127.0.0.1:4000/doctorsModel/doctors').subscribe(
+    this.http.get('http://127.0.0.1:3000/api/doctor/getAll').subscribe(
       (data: any[]) => {
         console.log("an init works--> " + JSON.stringify(data));
-        this.doctors = data;
+        this.doctors = data['data'];
        
       }
     );
@@ -77,22 +82,24 @@ mongoId:string;
   };
 
   onCreate(){
-    //  console.log("doctor added...!"+this.name);
+    console.log("doctor added...!"+this.name);
     // this.doctorServices.onCreateDocter(this.name,this.ward,this.assingDate,this.priority);
+    console.log(this.doctorType);
+    console.log("this.doctorType");
     this.DoctorID=this.genarateID('DR',this.NIC);
     let formData = {
       'id':this.DoctorID,
       'NIC':this.NIC,
       'name':this.name,
       'ward':this.ward,
-      'assingDate':this.assingDate,
       'doctorType':this.doctorType
     };
 
     // console.log("doctor added...!");
-    this.http.post('http://127.0.0.1:4000/doctorsModel/doctors', formData).subscribe(
+    this.http.post('http://127.0.0.1:3000/api/doctor/new', formData).subscribe(
       (data: any) => {
         console.log(data);
+        this.launch_toast()
         this.getDoctors();
       });
         
@@ -108,8 +115,9 @@ let updateData= {
   'doctorType':this.doctorType
 };
 console.log(this.mongoId);
-this.http.put('http://127.0.0.1:4000/doctorsModel/doctors/'+this.mongoId, updateData, {}).subscribe(
+this.http.post('http://127.0.0.1:3000/api/doctor/update', updateData).subscribe(
   (data: any) => {
+    this.launch_toast3();
     this.getDoctors();
     console.log(data);
   }
@@ -146,7 +154,7 @@ this.mongoId='';
      console.log(this.mongoId);
     //     this.getDoctors();});
 
-    this.http.request('DELETE','http://127.0.0.1:4000/doctorsModel/doctors/'+this.mongoId).subscribe(
+    this.http.post('http://127.0.0.1:3000/api/doctor/remove',{"doctor_id":this.DoctorID}).subscribe(
       (data: any[]) => {
         console.log(data);
         this.getDoctors();
@@ -156,10 +164,10 @@ this.mongoId='';
 
     );
     // this.adminServices.deleteProject(index);
-    this.mongoId='';
+    this.DoctorID='';
   }
   onRemoveIndex(id:any){
-    this.mongoId = id;
+    this.DoctorID = id;
     // this.removeIndex=index;
   }
   launch_toast() {
@@ -169,6 +177,11 @@ this.mongoId='';
 }
 launch_toast2() {
   var x = document.getElementById("toast1")
+  x.className = "show";
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
+}
+launch_toast3() {
+  var x = document.getElementById("toast3")
   x.className = "show";
   setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
 }
@@ -204,5 +217,15 @@ radio3Click(){
   this.buttonColor2='#2bbbad';
 
 }
+getPatientCountsForEachWard(){
+  
+  this.http.get('http://127.0.0.1:3000/api/patient/getPatientCountGroupByWard').subscribe((data: any) => {
+    console.log(data);
+    console.log("$$$$$$$$$$$$$$$$$$");
+    this.ward1 = data.data[2].count;
+    this.ward2 = data.data[0].count;
+    this.ward3 = data.data[1].count;
+  });
 
+}
 }
