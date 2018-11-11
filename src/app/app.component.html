@@ -1,10 +1,15 @@
 
-<app-navigation></app-navigation>
+<router-outlet></router-outlet>
+<ng-container *ngIf="router.url !== '/login' && router.url !== '/register' ">
+    <app-navigation></app-navigation>
+</ng-container>
+
 <main [ngClass]="{'py-0 px-0 my-0 mx-0': specialPage}"  class="pt-5 mx-lg-5" >
     
   <div class="mt-5">
     <router-outlet></router-outlet>
   </div>
 </main>
-
+<ng-container *ngIf=" router.url !== '/login'">
 <app-footer></app-footer>
+</ng-container>

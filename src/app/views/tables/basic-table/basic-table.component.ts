@@ -14,6 +14,8 @@ interface Nurses {
   styleUrls: ['./basic-table.component.scss']
 })
 export class BasicTableComponent implements OnInit {
+  currentWard:any;
+  schedule:any[];
   nurses:Nurses[];  
   model;
   name: any;
@@ -51,6 +53,8 @@ export class BasicTableComponent implements OnInit {
   ngOnInit() {
     this.buttonColor1='#3a7973';
     this. getNurses();
+    this.generateSchedule();
+    this.currentWard='w1';
   }
 
   getNurses() {
@@ -150,12 +154,14 @@ launch_toast2() {
  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
 }
 radio1Click(){
+  this.currentWard='w1';
   console.log("radio1Click");
   this.buttonColor1='#3a7973';
   this.buttonColor2='#2bbbad';
   this.buttonColor3='#2bbbad';
 }
 radio2Click(){
+  this.currentWard='w2';
   console.log("radio2Click");
   this.buttonColor2='#3a7973';
   this.buttonColor1='#2bbbad';
@@ -163,6 +169,7 @@ radio2Click(){
 
 }
 radio3Click(){
+  this.currentWard='w3';
   console.log("radio3Click");
   this.buttonColor3='#3a7973';
   this.buttonColor1='#2bbbad';
@@ -213,6 +220,49 @@ convert(){
 
   doc.save('Test.pdf');
 }
+
+generateSchedule(){
+  var data = [{"ward1":[{"nurseId":"nurse5","workingStatus":"Allowed"},{"nurseId":"nurse7","workingStatus":"OT"},{"nurseId":"nurse17","workingStatus":"Allowed"},{"nurseId":"nurse12","workingStatus":"Allowed"},{"nurseId":"nurse3","workingStatus":"OT"},{"nurseId":"nurse20","workingStatus":"OT"},{"nurseId":"nurse19","workingStatus":"Allowed"},{"nurseId":"nurse2","workingStatus":"Allowed"}],"ward2":[{"nurseId":"nurse6","workingStatus":"OT"},{"nurseId":"nurse10","workingStatus":"OT"},{"nurseId":"nurse9","workingStatus":"Allowed"},{"nurseId":"nurse18","workingStatus":"OT"},{"nurseId":"nurse16","workingStatus":"Allowed"},{"nurseId":"nurse1","workingStatus":"OT"}],"ward3":[{"nurseId":"nurse14","workingStatus":"Allowed"},{"nurseId":"nurse4","workingStatus":"Allowed"},{"nurseId":"nurse11","workingStatus":"OT"},{"nurseId":"nurse15","workingStatus":"OT"},{"nurseId":"nurse13","workingStatus":"OT"},{"nurseId":"nurse8","workingStatus":"Allowed"}]}];
+    var outPut = [];
+    var arr = ["ward1","ward2","ward3"]
+    var wardCount = 0;
+    for (let key in data[0]){
+      var wardObj ={};
+      var weeklyNurseArr = [];
+      var nurseCount = data[0][arr[wardCount]];
+      for(let dayCount=0;dayCount<7;dayCount++){
+        var randNurseArr = [];
+        var nurseArr = [];
+        for(let randCount=0;randCount<4;randCount++){
+         
+          var x = Math.floor(Math.random() * Math.floor(data[0][key].length));
+          
+          if(randNurseArr.indexOf(x)>-1)
+            randCount--;
+          else{
+           
+            nurseArr.push(data[0][key][x]["nurseId"]);
+           
+            
+            randNurseArr.push(x);
+          }
+          
+        }
+        
+        weeklyNurseArr.push(nurseArr);
+         
+      }
+      wardObj[key] = weeklyNurseArr;
+      outPut.push(wardObj);
+      wardCount++;
+    }
+    // return(JSON.stringify(outPut))
+    this.schedule=outPut;
+    console.log(outPut);
+
+
+}
+
 }
 
 

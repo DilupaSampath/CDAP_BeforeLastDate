@@ -13,13 +13,17 @@ import { Tab1Component } from './shared/components/tabs/tab1/tab1.component';
 import { ResearchAreaComponent } from 'app/views/research-area/research-area.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { TestComponent } from './views/test/test.component';
+import { LoginComponent } from 'app/views/login/login.component';
+import { RegisterComponent } from 'app/views/register/register.component';
 
 
 const routes: Route[] = [
   
-  { path: '', pathMatch: 'full', redirectTo: 'dashboards/v1' },
+  { path: '', pathMatch: 'full', redirectTo: 'login' },
   
   { path: 'adminPage', component:AdminPageComponent },
+    { path: 'login', component:LoginComponent },
+    { path: 'register', component:RegisterComponent },
   { path: 'test', component:TestComponent },
   { path: 'asd', children:
     [

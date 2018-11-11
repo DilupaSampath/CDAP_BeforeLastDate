@@ -10,5 +10,9 @@ export const config = {
     ward1Avalability:30,
     ward2Avalability:30,
     ward3Avalability:30,
+    bed1Avalability:25,
+    bed2Avalability:25,
+    bed33Avalability:25,
+    allBeds:75,
     hospitalCount:150
   };

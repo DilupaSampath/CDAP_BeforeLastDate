@@ -30,6 +30,8 @@ import { HelpComponent } from './help/help.component';
 import { ResearchAreaComponent } from './research-area/research-area.component';
 import { TestComponent } from './test/test.component';
 import { ParticlesModule } from 'angular-particle';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   imports: [
@@ -66,6 +68,8 @@ import { ParticlesModule } from 'angular-particle';
     HelpComponent,
     ResearchAreaComponent,
     TestComponent,
+    LoginComponent,
+    RegisterComponent,
 
   ],
   exports: [

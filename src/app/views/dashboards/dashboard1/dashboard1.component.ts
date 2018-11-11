@@ -36,7 +36,7 @@ export class Dashboard1Component implements OnInit {
   NextWeekFreeNursesCount: any;
   NextWeekFreeBedsCount: any;
   nextweekPatientStatus: any;
-
+configData:any;
   districtTableData: any[];
 
 
@@ -91,6 +91,8 @@ export class Dashboard1Component implements OnInit {
   constructor(private http: HttpClient) {
     this.wardTitle = 'Select Ward to View';
     this.visibility = 'hidden';
+    this.configData=config;
+ 
   }
 
   ngOnInit() {
@@ -112,7 +114,7 @@ export class Dashboard1Component implements OnInit {
         console.log(data.data);
         this.http.get('http://127.0.0.1:3000/api/patient/getAll').subscribe(
           (data2: any) => {
-            // var wardSpace = config.ward1Avalability + config.ward2Avalability + config.ward3Avalability;
+            // var wardSpace = config.   + config.ward2Avalability + config.ward3Avalability;
             // this.patientAvalability = Math.round((parseInt(data.data[0].total) * 100) / (hospitalCount));
             console.log(data2.data);
             data2.data.forEach(element => {
@@ -169,9 +171,9 @@ export class Dashboard1Component implements OnInit {
   }
   public chartType1: string = 'pie';
 
-  public chartData1: Array<any> = [30, 50, 20];
-  public chartData2: Array<any> = [20, 40, 40];
-  public chartData3: Array<any> = [25, 35, 40];
+  public chartData1: Array<any> = [12, 8, 16];
+  public chartData2: Array<any> = [5, 9, 15];
+  public chartData3: Array<any> = [3, 2, 9];
 
   public chartLabels1: Array<any> = ['High', 'Low', 'Medium'];
 
@@ -208,7 +210,7 @@ export class Dashboard1Component implements OnInit {
     this.http.get('http://127.0.0.1:3000/api/patient/getAll').subscribe((data: any) => {
       console.log(data);
       // this.districtTableData = data.data;
-
+this.allPatientCount=data.data.length;
       data.data.forEach(element => {
         if (element.ward == 'Ward 1') {
           if (element.level == "Level 1") {
@@ -262,25 +264,25 @@ export class Dashboard1Component implements OnInit {
     console.log(ward);
     if (ward == 'ward1') {
 
-      this.wardTitle = 'Ward 1 Next Week';
-      this.patientCountW = '100';
-      this.nextWeekPatients = '10';
-      this.nextweekNurses = '13';
-      this.availabilityA = '20%';
+      this.wardTitle = 'Ward 1';
+      this.patientCountW = '32';
+      this.nextWeekPatients = '4';
+      this.nextweekNurses = '9';
+      this.availabilityA = '24%';
     }
     if (ward == 'ward2') {
-      this.wardTitle = 'Ward 2 Next Week';
-      this.patientCountW = '80';
-      this.nextWeekPatients = '12';
-      this.nextweekNurses = '15';
-      this.availabilityA = '10%';
+      this.wardTitle = 'Ward 2';
+      this.patientCountW = '26';
+      this.nextWeekPatients = '3';
+      this.nextweekNurses = '8';
+      this.availabilityA = '21%';
     }
     if (ward == 'ward3') {
-      this.wardTitle = 'Ward 3 Next Week';
-      this.patientCountW = '50';
-      this.nextWeekPatients = '5';  
-      this.nextweekNurses = '8';
-      this.availabilityA = '34%';
+      this.wardTitle = 'Ward 3';
+      this.patientCountW = '12';
+      this.nextWeekPatients = '2';  
+      this.nextweekNurses = '2';
+      this.availabilityA = '12%';
     }
     this.visibility = 'visible';
   }

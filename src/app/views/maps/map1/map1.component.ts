@@ -116,16 +116,14 @@ findWard(level:string,ward1:any[],ward2:any[],ward3:any[]){
     }
 
 return tempWard+"-"+priyority+"-"+actualWard;
-
-
 }
 
   getPatients() {
     this.http.get('http://127.0.0.1:3000/api/patient/getAll')
       .subscribe(
-        (data: any[]) => {
+        (data: any) => {
           console.log("an init works--> " + JSON.stringify(data));
-          this.patients = data['data'];
+          this.patients = data.data;
          
         }
       );

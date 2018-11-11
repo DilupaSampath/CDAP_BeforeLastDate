@@ -89,7 +89,7 @@
       <span class="badge badge-primary badge-pill pull-right">{{ NextWeekFreeNursesCount }}</span>
     </a>
     <a class="list-group-item list-group-item-action waves-effect">Free beds
-      <span class="badge badge-primary badge-pill pull-right">54</span>
+      <span class="badge badge-primary badge-pill pull-right">{{configData.allBeds -  (nextWeekPatients + allPatientCount ) }}</span>
     </a>
   
   </div>
