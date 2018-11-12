@@ -15,7 +15,9 @@ interface Nurses {
 })
 export class BasicTableComponent implements OnInit {
   currentWard:any;
-  schedule:any[];
+  newSchedule:any[];
+  oldSchedule:any[];
+  oldScheduleStatus:any;
   nurses:Nurses[];  
   model;
   name: any;
@@ -48,13 +50,17 @@ export class BasicTableComponent implements OnInit {
     this.tabColor2='white';
     this.color1='white';
     this.color2='#000000';
+    this.oldScheduleStatus='true';
    }
 
   ngOnInit() {
     this.buttonColor1='#3a7973';
     this. getNurses();
-    this.generateSchedule();
+    this.oldScheduleStatus='true';
+    // this.generateSchedule();
+    this.loadSchedules();
     this.currentWard='w1';
+    
   }
 
   getNurses() {
@@ -88,9 +94,11 @@ export class BasicTableComponent implements OnInit {
   }
 
   loadNextWeek(){
+    this.oldScheduleStatus='false';
     this.titleShedule="Next Week Working Shedule";
   }
   loadThisWeek(){
+    this.oldScheduleStatus='true';
     this.titleShedule="This Week Working Shedule";
   }
 //   onCreate(){
@@ -98,6 +106,21 @@ export class BasicTableComponent implements OnInit {
 //    this.nursesServices.onCreateNurse(this.name,this.ward,this.assingDate,this.priority);
 //    console.log("Nurse added...!");
 //  }
+loadSchedules(){
+
+
+  this.http.get('http://127.0.0.1:3000/api/predictions/getSchedules').subscribe(
+    (data: any) => {
+console.log(data);
+this.newSchedule = data.data.newSchedule;
+this.oldSchedule = data.data.oldwSchedule;
+    });
+
+  // this.nursesServices.onUpdateNurse(this.indexDoctro,this.name,this.ward,this.assingDate,this.priority);
+ }
+
+
+
  onUpdate(){
   let formData = {
     "name":this.name,
@@ -222,43 +245,42 @@ convert(){
 }
 
 generateSchedule(){
-  var data = [{"ward1":[{"nurseId":"nurse5","workingStatus":"Allowed"},{"nurseId":"nurse7","workingStatus":"OT"},{"nurseId":"nurse17","workingStatus":"Allowed"},{"nurseId":"nurse12","workingStatus":"Allowed"},{"nurseId":"nurse3","workingStatus":"OT"},{"nurseId":"nurse20","workingStatus":"OT"},{"nurseId":"nurse19","workingStatus":"Allowed"},{"nurseId":"nurse2","workingStatus":"Allowed"}],"ward2":[{"nurseId":"nurse6","workingStatus":"OT"},{"nurseId":"nurse10","workingStatus":"OT"},{"nurseId":"nurse9","workingStatus":"Allowed"},{"nurseId":"nurse18","workingStatus":"OT"},{"nurseId":"nurse16","workingStatus":"Allowed"},{"nurseId":"nurse1","workingStatus":"OT"}],"ward3":[{"nurseId":"nurse14","workingStatus":"Allowed"},{"nurseId":"nurse4","workingStatus":"Allowed"},{"nurseId":"nurse11","workingStatus":"OT"},{"nurseId":"nurse15","workingStatus":"OT"},{"nurseId":"nurse13","workingStatus":"OT"},{"nurseId":"nurse8","workingStatus":"Allowed"}]}];
-    var outPut = [];
-    var arr = ["ward1","ward2","ward3"]
-    var wardCount = 0;
-    for (let key in data[0]){
-      var wardObj ={};
-      var weeklyNurseArr = [];
-      var nurseCount = data[0][arr[wardCount]];
-      for(let dayCount=0;dayCount<7;dayCount++){
-        var randNurseArr = [];
-        var nurseArr = [];
-        for(let randCount=0;randCount<4;randCount++){
+ var outPut = [{"ward1":[{"nurseId":"nurse5","workingStatus":"Allowed"},{"nurseId":"nurse7","workingStatus":"OT"},{"nurseId":"nurse17","workingStatus":"Allowed"},{"nurseId":"nurse12","workingStatus":"Allowed"},{"nurseId":"nurse3","workingStatus":"OT"},{"nurseId":"nurse20","workingStatus":"OT"},{"nurseId":"nurse19","workingStatus":"Allowed"},{"nurseId":"nurse2","workingStatus":"Allowed"}],"ward2":[{"nurseId":"nurse6","workingStatus":"OT"},{"nurseId":"nurse10","workingStatus":"OT"},{"nurseId":"nurse9","workingStatus":"Allowed"},{"nurseId":"nurse18","workingStatus":"OT"},{"nurseId":"nurse16","workingStatus":"Allowed"},{"nurseId":"nurse1","workingStatus":"OT"}],"ward3":[{"nurseId":"nurse14","workingStatus":"Allowed"},{"nurseId":"nurse4","workingStatus":"Allowed"},{"nurseId":"nurse11","workingStatus":"OT"},{"nurseId":"nurse15","workingStatus":"OT"},{"nurseId":"nurse13","workingStatus":"OT"},{"nurseId":"nurse8","workingStatus":"Allowed"}]}];
+    // var outPut = [];
+    // var arr = ["ward1","ward2","ward3"]
+    // var wardCount = 0;
+    // for (let key in data[0]){
+    //   var wardObj ={};
+    //   var weeklyNurseArr = [];
+    //   var nurseCount = data[0][arr[wardCount]];
+    //   for(let dayCount=0;dayCount<7;dayCount++){
+    //     var randNurseArr = [];
+    //     var nurseArr = [];
+    //     for(let randCount=0;randCount<4;randCount++){
          
-          var x = Math.floor(Math.random() * Math.floor(data[0][key].length));
+    //       var x = Math.floor(Math.random() * Math.floor(data[0][key].length));
           
-          if(randNurseArr.indexOf(x)>-1)
-            randCount--;
-          else{
+    //       if(randNurseArr.indexOf(x)>-1)
+    //         randCount--;
+    //       else{
            
-            nurseArr.push(data[0][key][x]["nurseId"]);
+    //         nurseArr.push(data[0][key][x]["nurseId"]);
            
             
-            randNurseArr.push(x);
-          }
+    //         randNurseArr.push(x);
+    //       }
           
-        }
+    //     }
         
-        weeklyNurseArr.push(nurseArr);
+    //     weeklyNurseArr.push(nurseArr);
          
-      }
-      wardObj[key] = weeklyNurseArr;
-      outPut.push(wardObj);
-      wardCount++;
-    }
-    // return(JSON.stringify(outPut))
-    this.schedule=outPut;
-    console.log(outPut);
+    //   }
+    //   wardObj[key] = weeklyNurseArr;
+    //   outPut.push(wardObj);
+    //   wardCount++;
+    // }
+    return(outPut)
+
 
 
 }

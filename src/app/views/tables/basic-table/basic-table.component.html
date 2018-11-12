@@ -410,8 +410,8 @@
                             <th>6.00am - 10.00am</th>
                         </tr>
                     </thead>
-                    <tbody *ngIf="currentWard == 'w1'" class="tbodyShedule" style="box-shadow: 7px 4px 4px 1px rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);">
-                        <tr *ngFor="let item of schedule[0].ward1">
+                    <tbody *ngIf="currentWard == 'w1' &&  oldScheduleStatus =='true' " class="tbodyShedule" style="box-shadow: 7px 4px 4px 1px rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);">
+                        <tr *ngFor="let item of oldSchedule.ward1">
                             <th id="sideTh" scope="row">SUN</th>
                             <td>
 
@@ -423,8 +423,8 @@
                         </tr>
                       
                     </tbody>
-                    <tbody *ngIf="currentWard == 'w2'" class="tbodyShedule" style="box-shadow: 7px 4px 4px 1px rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);">
-                            <tr *ngFor="let item of schedule[1].ward2">
+                    <tbody *ngIf="currentWard == 'w1' &&  oldScheduleStatus !='true' " class="tbodyShedule" style="box-shadow: 7px 4px 4px 1px rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);">
+                            <tr *ngFor="let item of newSchedule.ward1">
                                 <th id="sideTh" scope="row">SUN</th>
                                 <td>
     
@@ -436,8 +436,47 @@
                             </tr>
                           
                         </tbody>
-                        <tbody *ngIf="currentWard == 'w3'" class="tbodyShedule" style="box-shadow: 7px 4px 4px 1px rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);">
-                                <tr *ngFor="let item of schedule[2].ward3">
+                        <tbody *ngIf="currentWard == 'w2' &&  oldScheduleStatus =='true' "  class="tbodyShedule" style="box-shadow: 7px 4px 4px 1px rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);">
+                                <tr *ngFor="let item of oldSchedule.ward2">
+                                    <th id="sideTh" scope="row">SUN</th>
+                                    <td>
+        
+                                        {{ item[0] }} /  {{ item[1] }}
+                                    </td>
+                                    <td>
+                                            {{ item[2] }} /  {{ item[3] }}
+                                    </td>
+                                </tr>
+                              
+                            </tbody>
+                            <tbody *ngIf="currentWard == 'w2' &&  oldScheduleStatus !='true' "  class="tbodyShedule" style="box-shadow: 7px 4px 4px 1px rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);">
+                                <tr *ngFor="let item of newSchedule.ward2">
+                                    <th id="sideTh" scope="row">SUN</th>
+                                    <td>
+        
+                                        {{ item[0] }} /  {{ item[1] }}
+                                    </td>
+                                    <td>
+                                            {{ item[2] }} /  {{ item[3] }}
+                                    </td>
+                                </tr>
+                              
+                            </tbody>
+                            <tbody *ngIf="currentWard == 'w3' &&  oldScheduleStatus =='true' "  class="tbodyShedule" style="box-shadow: 7px 4px 4px 1px rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);">
+                                <tr *ngFor="let item of oldSchedule.ward3">
+                                    <th id="sideTh" scope="row">SUN</th>
+                                    <td>
+        
+                                        {{ item[0] }} /  {{ item[1] }}
+                                    </td>
+                                    <td>
+                                            {{ item[2] }} /  {{ item[3] }}
+                                    </td>
+                                </tr>
+                              
+                            </tbody>
+                            <tbody *ngIf="currentWard == 'w3' &&  oldScheduleStatus !='true' "  class="tbodyShedule" style="box-shadow: 7px 4px 4px 1px rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);">
+                                <tr *ngFor="let item of newSchedule.ward3">
                                     <th id="sideTh" scope="row">SUN</th>
                                     <td>
         
